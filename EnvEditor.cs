@@ -196,7 +196,13 @@ namespace EEdit
         private void SaveButton_Click(object sender, EventArgs e)
         {
             // TODO
-            MessageBox.Show("Saving is disabled temporarily.");
+            MessageBox.Show("This program is still under development and may still have bugs.  Please backup your existing settings.");
+            BackupExistingEnvironment();
+
+            environment.Save();
+
+            // TODO: Don't reload from scratch. 
+            LoadEnvironment(environment.EnvTarget);
         }
 
         #endregion
