@@ -196,7 +196,7 @@ namespace EEdit
         private void SaveButton_Click(object sender, EventArgs e)
         {
             // TODO
-            throw new NotImplementedException();
+            MessageBox.Show("Saving is disabled temporarily.");
         }
 
         #endregion
