@@ -66,5 +66,29 @@ namespace EEdit
 
             File.WriteAllBytes(filepath, Encoding.ASCII.GetBytes(output.ToString()));
         }
+
+        public void Save()
+        {
+            foreach (EnvValue value in Variables.Values.ToArray())
+            {
+                switch (value.State)
+                {
+                    case EnvValueState.Edited:
+                    case EnvValueState.Added:
+                        Environment.SetEnvironmentVariable(value.Key, value.ToString(), EnvTarget);
+                        value.ResetState();
+                        break;
+                    
+                    case EnvValueState.Deleted:
+                        Environment.SetEnvironmentVariable(value.Key, "", EnvTarget);
+                        Variables.Remove(value.Key);
+                        break;
+
+                    case EnvValueState.NoChange:
+                    default:
+                        break;
+                }
+            }
+        }
     }
 }

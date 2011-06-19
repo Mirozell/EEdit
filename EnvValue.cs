@@ -45,6 +45,11 @@ namespace EEdit
                 this.State = state;
         }
 
+        public void ResetState()
+        {
+            this.State = EnvValueState.NoChange;
+        }
+
         public override string ToString()
         {
             CleanUp();
