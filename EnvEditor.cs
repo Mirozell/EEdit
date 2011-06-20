@@ -12,6 +12,8 @@ namespace EEdit
 {
     public partial class EnvEditor : UserControl
     {
+        private const string DefaultVariable = "path";
+
         private EnvModel environment;
 
         public EnvEditor()
@@ -158,6 +160,13 @@ namespace EEdit
 
             if (e.Label == null || string.IsNullOrWhiteSpace(e.Label)) return;
 
+            ListViewItem existingItem = GetVariableItem(e.Label);
+            if (existingItem != null)
+            {
+                existingItem.Selected = true;
+                return;
+            }
+
             EnvValue value = new EnvValue(e.Label, "");
             value.UpdateState(EnvValueState.Added);
             environment.Variables[e.Label] = value;
@@ -266,22 +275,27 @@ namespace EEdit
 
             this.VarList.Items.Add(new ListViewItem("[new]"));
 
-            SelectDefault();
+            SelectVariable(DefaultVariable);
         }
 
-        private void SelectDefault()
+        private void SelectVariable(string variable)
         {
-            string defaultVar = "path";
+            ListViewItem item = GetVariableItem(variable);
+            if (item != null) item.Selected = true;
+        }
 
+        private ListViewItem GetVariableItem(string variable)
+        {
             for (int i = 0; i < this.environment.Variables.Count; i++)
             {
                 ListViewItem item = VarList.Items[i];
-                if (item.Text.ToLower() == defaultVar)
+                if (item.Text.ToLower() == variable)
                 {
-                    item.Selected = true;
-                    break;
+                    return item;
                 }
             }
+
+            return null;
         }
 
         private void UpdateButtonState()
