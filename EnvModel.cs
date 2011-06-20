@@ -61,7 +61,7 @@ namespace EEdit
             {
                 if (value.State == EnvValueState.Deleted) continue;
 
-                output.AppendLine(value.Key + "=" + value.ToString());
+                output.AppendLine(value.Key + "=" + value.FullValue);
             }
 
             File.WriteAllBytes(filepath, Encoding.ASCII.GetBytes(output.ToString()));
@@ -71,11 +71,13 @@ namespace EEdit
         {
             foreach (EnvValue value in Variables.Values.ToArray())
             {
+                value.CleanUp();
+
                 switch (value.State)
                 {
                     case EnvValueState.Edited:
                     case EnvValueState.Added:
-                        Environment.SetEnvironmentVariable(value.Key, value.ToString(), EnvTarget);
+                        Environment.SetEnvironmentVariable(value.Key, value.FullValue, EnvTarget);
                         value.ResetState();
                         break;
                     

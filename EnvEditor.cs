@@ -341,7 +341,7 @@ namespace EEdit
                 return;
 
             EnvValue value = this.environment.Variables[VarList.SelectedItems[0].Text];
-            ValueDisplay.Text = value.ToString();
+            ValueDisplay.Text = value.FullValue;
             foreach (string entry in value.Entries)
             {
                 ListViewItem item = new ListViewItem(entry);

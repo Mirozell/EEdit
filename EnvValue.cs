@@ -10,7 +10,7 @@ namespace EEdit
     {
         public string Key { get; private set; }
         public EnvValueState State { get; private set; }
-        public ObservableCollection<string> Entries;
+        public readonly ObservableCollection<string> Entries;
 
         private string splitChar = ";";
 
@@ -19,12 +19,15 @@ namespace EEdit
             if (string.IsNullOrWhiteSpace(key)) throw new ArgumentException("Key cannot be null, empty, or whitespace", "key");
 
             this.Key = key;
-            value = value ?? "";
 
-            string[] entries = value.Split(
-                new string[] { splitChar },
-                StringSplitOptions.RemoveEmptyEntries);
-            this.Entries = new ObservableCollection<string>(entries);
+            Entries = new ObservableCollection<string>();
+            SetEntries(value);
+        }
+
+        public string FullValue
+        {
+            get { return string.Join(splitChar, Entries.ToArray()); }
+            set { SetEntries(value); }
         }
 
         public void CleanUp()
@@ -50,10 +53,21 @@ namespace EEdit
             this.State = EnvValueState.NoChange;
         }
 
-        public override string ToString()
+        private string SetEntries(string value)
         {
-            CleanUp();
-            return string.Join(splitChar, Entries.ToArray());
+            value = value ?? "";
+            Entries.Clear();
+
+            string[] entries = value.Split(
+                new string[] { splitChar },
+                StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (string entry in entries)
+            {
+                Entries.Add(entry);
+            }
+
+            return value;
         }
     }
 }
