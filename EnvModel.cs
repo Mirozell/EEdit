@@ -61,7 +61,7 @@ namespace EEdit
             {
                 if (value.Deleted) continue;
 
-                output.AppendLine(value.Key + "=" + value.FullValue);
+                output.AppendLine(value.Variable + "=" + value.FullValue);
             }
 
             File.WriteAllBytes(filepath, Encoding.ASCII.GetBytes(output.ToString()));
@@ -75,14 +75,14 @@ namespace EEdit
 
                 if (value.Edited || value.Added)
                 {
-                    Environment.SetEnvironmentVariable(value.Key, value.FullValue, EnvTarget);
+                    Environment.SetEnvironmentVariable(value.Variable, value.FullValue, EnvTarget);
                     value.Edited = false;
                     value.Added = false;
                 }
                 else if (value.Deleted)
                 {
-                    Environment.SetEnvironmentVariable(value.Key, "", EnvTarget);
-                    Values.Remove(value.Key);
+                    Environment.SetEnvironmentVariable(value.Variable, "", EnvTarget);
+                    Values.Remove(value.Variable);
                 }
             }
         }

@@ -8,7 +8,7 @@ namespace EEdit
 {
     class EnvValue
     {
-        public string Key { get; private set; }
+        public string Variable { get; private set; }
 
         public bool Deleted { get; set; }
         public bool Added { get; set; }
@@ -18,11 +18,11 @@ namespace EEdit
 
         private string splitChar = ";";
 
-        public EnvValue(string key, string value)
+        public EnvValue(string variable, string value)
         {
-            if (string.IsNullOrWhiteSpace(key)) throw new ArgumentException("Key cannot be null, empty, or whitespace", "key");
+            if (string.IsNullOrWhiteSpace(variable)) throw new ArgumentException("Variable cannot be null, empty, or whitespace", "Variable");
 
-            Key = key;
+            Variable = variable;
 
             Entries = new ObservableCollection<string>();
             SetEntries(value);
