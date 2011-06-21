@@ -9,7 +9,11 @@ namespace EEdit
     class EnvValue
     {
         public string Key { get; private set; }
-        public EnvValueState State { get; private set; }
+
+        public bool Deleted { get; set; }
+        public bool Added { get; set; }
+        public bool Edited { get; set; }
+
         public readonly ObservableCollection<string> Entries;
 
         private string splitChar = ";";
@@ -40,17 +44,6 @@ namespace EEdit
                 if (string.IsNullOrWhiteSpace(Entries[i]))
                     Entries.RemoveAt(i);
             }
-        }
-
-        public void UpdateState(EnvValueState state)
-        {
-            if ((int)state > (int)this.State)
-                this.State = state;
-        }
-
-        public void ResetState()
-        {
-            this.State = EnvValueState.NoChange;
         }
 
         private string SetEntries(string value)

@@ -59,7 +59,7 @@ namespace EEdit
 
             foreach (EnvValue value in this.Variables.Values)
             {
-                if (value.State == EnvValueState.Deleted) continue;
+                if (value.Deleted) continue;
 
                 output.AppendLine(value.Key + "=" + value.FullValue);
             }
@@ -73,22 +73,16 @@ namespace EEdit
             {
                 value.CleanUp();
 
-                switch (value.State)
+                if (value.Edited || value.Added)
                 {
-                    case EnvValueState.Edited:
-                    case EnvValueState.Added:
-                        Environment.SetEnvironmentVariable(value.Key, value.FullValue, EnvTarget);
-                        value.ResetState();
-                        break;
-                    
-                    case EnvValueState.Deleted:
-                        Environment.SetEnvironmentVariable(value.Key, "", EnvTarget);
-                        Variables.Remove(value.Key);
-                        break;
-
-                    case EnvValueState.NoChange:
-                    default:
-                        break;
+                    Environment.SetEnvironmentVariable(value.Key, value.FullValue, EnvTarget);
+                    value.Edited = false;
+                    value.Added = false;
+                }
+                else if (value.Deleted)
+                {
+                    Environment.SetEnvironmentVariable(value.Key, "", EnvTarget);
+                    Variables.Remove(value.Key);
                 }
             }
         }

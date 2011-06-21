@@ -44,7 +44,7 @@ namespace EEdit
             }
 
             EnvValue value = environment.Variables[VarList.SelectedItems[0].Text];
-            value.UpdateState(EnvValueState.Edited);
+            value.Edited = true;
 
             if (string.IsNullOrWhiteSpace(e.Label))
             {
@@ -78,6 +78,7 @@ namespace EEdit
 
             ListViewItem item = this.ValueList.SelectedItems[0];
             EnvValue value = ((EnvValue)item.Tag);
+            value.Edited = true;
             value.Entries.Move(item.Index, 0);
         }
 
@@ -91,6 +92,7 @@ namespace EEdit
             if (item.Index > 0)
             {
                 EnvValue value = ((EnvValue)item.Tag);
+                value.Edited = true;
                 value.Entries.Move(item.Index, item.Index - 1);
             }
         }
@@ -105,6 +107,7 @@ namespace EEdit
             if (item.Index < ValueList.Items.Count - 1)
             {
                 EnvValue value = ((EnvValue)item.Tag);
+                value.Edited = true;
                 value.Entries.Move(item.Index, item.Index + 1);
             }
         }
@@ -116,6 +119,7 @@ namespace EEdit
 
             ListViewItem item = this.ValueList.SelectedItems[0];
             EnvValue value = ((EnvValue)item.Tag);
+            value.Edited = true;
             value.Entries.Move(item.Index, ValueList.Items.Count - 2);
         }
 
@@ -168,8 +172,7 @@ namespace EEdit
                 return;
             }
 
-            EnvValue value = new EnvValue(e.Label, "");
-            value.UpdateState(EnvValueState.Added);
+            EnvValue value = new EnvValue(e.Label, "") { Added = true };
             environment.Variables[e.Label] = value;
             value.Entries.CollectionChanged += new NotifyCollectionChangedEventHandler(Entries_CollectionChanged);
 
@@ -248,7 +251,7 @@ namespace EEdit
 
             if (value == null) return;
 
-            value.UpdateState(EnvValueState.Edited);
+            value.Edited = true;
             value.Entries.RemoveAt(item.Index);
             LoadValues();
         }
@@ -260,7 +263,7 @@ namespace EEdit
 
             EnvValue value = environment.Variables[item.Text];
 
-            value.UpdateState(EnvValueState.Deleted);
+            value.Deleted = true;
             UpdateVarStateIndicators();
             UpdateButtonState();
         }
@@ -271,9 +274,8 @@ namespace EEdit
             if (item.Text == NewItemText) return;
 
             EnvValue value = environment.Variables[item.Text];
-
-            value.ResetState();
-            value.UpdateState(EnvValueState.Edited);
+            value.Deleted = false;
+            
             UpdateButtonState();
         }
 
@@ -325,16 +327,9 @@ namespace EEdit
 
             ListViewItem item = VarList.SelectedItems[0];
             EnvValue value = environment.Variables[item.Text];
-            if (value.State == EnvValueState.Deleted)
-            {
-                RemoveVarButton.Enabled = false;
-                RestoreButton.Enabled = true;
-            }
-            else
-            {
-                RemoveVarButton.Enabled = true;
-                RestoreButton.Enabled = false;
-            }
+
+            RestoreButton.Enabled = value.Deleted;
+            RemoveVarButton.Enabled = !value.Deleted;
         }
 
         private void UpdateVarStateIndicators()
@@ -344,26 +339,16 @@ namespace EEdit
                 if (item.Text == NewItemText) continue;
 
                 EnvValue value = environment.Variables[item.Text];
-                item.BackColor = GetIndicatorColor(value.State);
+                item.BackColor = GetIndicatorColor(value);
             }
         }
 
-        private Color GetIndicatorColor(EnvValueState state)
+        private Color GetIndicatorColor(EnvValue value)
         {
-            switch (state)
-            {
-                case EnvValueState.Edited:
-                    return Color.LightBlue;
-
-                case EnvValueState.Added:
-                    return Color.LightGreen;
-
-                case EnvValueState.Deleted:
-                    return Color.Pink;
-
-                default:
-                    return Color.White;
-            }
+            return (value.Deleted) ? Color.Pink :
+                   (value.Added) ? Color.LightGreen :
+                   (value.Edited) ? Color.LightBlue :
+                   Color.White;
         }
 
         private void LoadValues()
