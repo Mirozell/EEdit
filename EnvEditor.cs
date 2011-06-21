@@ -13,6 +13,7 @@ namespace EEdit
     public partial class EnvEditor : UserControl
     {
         private const string DefaultVariable = "path";
+        private const string NewItemText = "[New]";
 
         private EnvModel environment;
 
@@ -173,7 +174,7 @@ namespace EEdit
             value.Entries.CollectionChanged += new NotifyCollectionChangedEventHandler(Entries_CollectionChanged);
 
             VarList.Items[e.Item].Text = e.Label;
-            VarList.Items.Add(new ListViewItem("[new]"));
+            VarList.Items.Add(new ListViewItem(NewItemText));
             LoadValues();
         }
 
@@ -250,7 +251,7 @@ namespace EEdit
         private void RemoveSelectedVariable()
         {
             ListViewItem item = VarList.SelectedItems[0];
-            if (item.Text == "[new]") return;
+            if (item.Text == NewItemText) return;
 
             EnvValue value = environment.Variables[item.Text];
 
@@ -269,7 +270,7 @@ namespace EEdit
                 this.environment.Variables[variable].Entries.CollectionChanged += new NotifyCollectionChangedEventHandler(Entries_CollectionChanged);
             }
 
-            this.VarList.Items.Add(new ListViewItem("[new]"));
+            this.VarList.Items.Add(new ListViewItem(NewItemText));
 
             SelectVariable(DefaultVariable);
         }
@@ -309,7 +310,7 @@ namespace EEdit
         {
             foreach (ListViewItem item in VarList.Items)
             {
-                if (item.Text == "[new]") continue;
+                if (item.Text == NewItemText) continue;
 
                 EnvValue value = environment.Variables[item.Text];
                 item.BackColor = GetIndicatorColor(value.State);
@@ -349,7 +350,7 @@ namespace EEdit
                 ValueList.Items.Add(item);
             }
 
-            ValueList.Items.Add(new ListViewItem("[New]"));
+            ValueList.Items.Add(new ListViewItem(NewItemText));
 
             ValueList.Focus();
 
