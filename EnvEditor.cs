@@ -323,7 +323,7 @@ namespace EEdit
             UpButton.Enabled = selection && ValueList.SelectedIndices[0] > 0 && ValueList.SelectedIndices[0] < ValueList.Items.Count - 1;
             DownButton.Enabled = selection && ValueList.SelectedIndices[0] < ValueList.Items.Count - 2;
             BottomButton.Enabled = selection && ValueList.SelectedIndices[0] < ValueList.Items.Count - 2;
-            RemoveEntryButton.Enabled = selection && ValueList.SelectedIndices[0] > 0 && ValueList.SelectedIndices[0] < ValueList.Items.Count - 1;
+            RemoveEntryButton.Enabled = selection && ValueList.SelectedIndices[0] < ValueList.Items.Count - 1;
 
             ListViewItem item = VarList.SelectedItems[0];
             EnvValue value = environment.Variables[item.Text];
