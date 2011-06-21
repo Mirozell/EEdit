@@ -18,14 +18,14 @@ namespace EEdit
 
         public EnvModel(EnvironmentVariableTarget target)
         {
-            this.EnvTarget = target;
-            this.Values = new Dictionary<string, EnvValue>();
-            this.Load();
+            EnvTarget = target;
+            Values = new Dictionary<string, EnvValue>();
+            Load();
         }
 
         private void Load()
         {
-            this.Values.Clear();
+            Values.Clear();
 
             RegistryKey root = null;
             string location = null;
@@ -57,7 +57,7 @@ namespace EEdit
         {
             StringBuilder output = new StringBuilder();
 
-            foreach (EnvValue value in this.Values.Values)
+            foreach (EnvValue value in Values.Values)
             {
                 if (value.Deleted) continue;
 

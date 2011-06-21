@@ -22,7 +22,7 @@ namespace EEdit
         {
             if (string.IsNullOrWhiteSpace(key)) throw new ArgumentException("Key cannot be null, empty, or whitespace", "key");
 
-            this.Key = key;
+            Key = key;
 
             Entries = new ObservableCollection<string>();
             SetEntries(value);

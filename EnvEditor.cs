@@ -73,10 +73,10 @@ namespace EEdit
 
         private void TopButton_Click(object sender, EventArgs e)
         {
-            if (this.EntryList.SelectedIndices.Count == 0)
+            if (EntryList.SelectedIndices.Count == 0)
                 return;
 
-            ListViewItem item = this.EntryList.SelectedItems[0];
+            ListViewItem item = EntryList.SelectedItems[0];
             EnvValue value = ((EnvValue)item.Tag);
             value.Edited = true;
             value.Entries.Move(item.Index, 0);
@@ -84,10 +84,10 @@ namespace EEdit
 
         private void UpButton_Click(object sender, EventArgs e)
         {
-            if (this.EntryList.SelectedIndices.Count == 0)
+            if (EntryList.SelectedIndices.Count == 0)
                 return;
 
-            ListViewItem item = this.EntryList.SelectedItems[0];
+            ListViewItem item = EntryList.SelectedItems[0];
 
             if (item.Index > 0)
             {
@@ -99,10 +99,10 @@ namespace EEdit
 
         private void DownButton_Click(object sender, EventArgs e)
         {
-            if (this.EntryList.SelectedIndices.Count == 0)
+            if (EntryList.SelectedIndices.Count == 0)
                 return;
 
-            ListViewItem item = this.EntryList.SelectedItems[0];
+            ListViewItem item = EntryList.SelectedItems[0];
 
             if (item.Index < EntryList.Items.Count - 1)
             {
@@ -114,10 +114,10 @@ namespace EEdit
 
         private void BottomButton_Click(object sender, EventArgs e)
         {
-            if (this.EntryList.SelectedIndices.Count == 0)
+            if (EntryList.SelectedIndices.Count == 0)
                 return;
 
-            ListViewItem item = this.EntryList.SelectedItems[0];
+            ListViewItem item = EntryList.SelectedItems[0];
             EnvValue value = ((EnvValue)item.Tag);
             value.Edited = true;
             value.Entries.Move(item.Index, EntryList.Items.Count - 2);
@@ -240,7 +240,7 @@ namespace EEdit
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 string filepath = dlg.FileName;
-                this.environment.Export(filepath);
+                environment.Export(filepath);
             }
         }
 
@@ -283,14 +283,14 @@ namespace EEdit
         {
             VarList.Items.Clear();
 
-            this.environment = new EnvModel(target);
-            foreach (string variable in this.environment.Values.Keys)
+            environment = new EnvModel(target);
+            foreach (string variable in environment.Values.Keys)
             {
-                this.VarList.Items.Add(variable);
-                this.environment.Values[variable].Entries.CollectionChanged += new NotifyCollectionChangedEventHandler(Entries_CollectionChanged);
+                VarList.Items.Add(variable);
+                environment.Values[variable].Entries.CollectionChanged += new NotifyCollectionChangedEventHandler(Entries_CollectionChanged);
             }
 
-            this.VarList.Items.Add(new ListViewItem(NewItemText));
+            VarList.Items.Add(new ListViewItem(NewItemText));
 
             SelectVariable(DefaultVariable);
         }
@@ -303,7 +303,7 @@ namespace EEdit
 
         private ListViewItem GetVariableItem(string variable)
         {
-            for (int i = 0; i < this.environment.Values.Count; i++)
+            for (int i = 0; i < environment.Values.Count; i++)
             {
                 ListViewItem item = VarList.Items[i];
                 if (item.Text.ToLower() == variable)
@@ -357,7 +357,7 @@ namespace EEdit
             if (VarList.SelectedIndices.Count == 0 || VarList.SelectedIndices[0] == VarList.Items.Count - 1)
                 return;
 
-            EnvValue value = this.environment.Values[VarList.SelectedItems[0].Text];
+            EnvValue value = environment.Values[VarList.SelectedItems[0].Text];
             ValueDisplay.Text = value.FullValue;
             foreach (string entry in value.Entries)
             {
