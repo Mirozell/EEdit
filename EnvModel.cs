@@ -48,7 +48,7 @@ namespace EEdit
             {
                 foreach (string variable in key.GetValueNames())
                 {
-                    Variables[variable] = new EnvVariable(variable, key.GetValue(variable, "", RegistryValueOptions.DoNotExpandEnvironmentNames) as string);
+                    Variables[variable] = new EnvVariable(variable, key.GetValue(variable, "", RegistryValueOptions.DoNotExpandEnvironmentNames) as string, false);
                 }
             }
         }
@@ -76,15 +76,27 @@ namespace EEdit
                 if (value.Edited || value.Added)
                 {
                     Environment.SetEnvironmentVariable(value.Variable, value.FullValue, EnvTarget);
-                    value.Edited = false;
-                    value.Added = false;
                 }
                 else if (value.Deleted)
                 {
                     Environment.SetEnvironmentVariable(value.Variable, "", EnvTarget);
                     Variables.Remove(value.Variable);
                 }
+
+                value.ClearChangeStates();
             }
+        }
+
+        public EnvVariable AddVariable(string variable)
+        {
+            EnvVariable newVar = new EnvVariable(variable, "", true);
+            Variables[variable] = newVar;
+            return newVar;
+        }
+
+        public void RemoveVariable(string variable)
+        {
+            Variables[variable].Delete();
         }
     }
 }
