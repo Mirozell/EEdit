@@ -14,18 +14,18 @@ namespace EEdit
         private const string CurrentUserEnvironmentLocation = @"Environment";
 
         public EnvironmentVariableTarget EnvTarget { get; private set; }
-        public Dictionary<string, EnvValue> Variables;
+        public Dictionary<string, EnvValue> Values;
 
         public EnvModel(EnvironmentVariableTarget target)
         {
             this.EnvTarget = target;
-            this.Variables = new Dictionary<string, EnvValue>();
+            this.Values = new Dictionary<string, EnvValue>();
             this.Load();
         }
 
         private void Load()
         {
-            this.Variables.Clear();
+            this.Values.Clear();
 
             RegistryKey root = null;
             string location = null;
@@ -48,7 +48,7 @@ namespace EEdit
             {
                 foreach (string variable in key.GetValueNames())
                 {
-                    Variables[variable] = new EnvValue(variable, key.GetValue(variable, "", RegistryValueOptions.DoNotExpandEnvironmentNames) as string);
+                    Values[variable] = new EnvValue(variable, key.GetValue(variable, "", RegistryValueOptions.DoNotExpandEnvironmentNames) as string);
                 }
             }
         }
@@ -57,7 +57,7 @@ namespace EEdit
         {
             StringBuilder output = new StringBuilder();
 
-            foreach (EnvValue value in this.Variables.Values)
+            foreach (EnvValue value in this.Values.Values)
             {
                 if (value.Deleted) continue;
 
@@ -69,7 +69,7 @@ namespace EEdit
 
         public void Save()
         {
-            foreach (EnvValue value in Variables.Values.ToArray())
+            foreach (EnvValue value in Values.Values.ToArray())
             {
                 value.CleanUp();
 
@@ -82,7 +82,7 @@ namespace EEdit
                 else if (value.Deleted)
                 {
                     Environment.SetEnvironmentVariable(value.Key, "", EnvTarget);
-                    Variables.Remove(value.Key);
+                    Values.Remove(value.Key);
                 }
             }
         }
