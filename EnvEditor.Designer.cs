@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.RemoveVarButton = new System.Windows.Forms.Button();
             this.VarList = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.RemoveEntryButton = new System.Windows.Forms.Button();
@@ -44,7 +45,7 @@
             this.BackupButton = new System.Windows.Forms.Button();
             this.ExportButton = new System.Windows.Forms.Button();
             this.ResetButton = new System.Windows.Forms.Button();
-            this.RemoveVarButton = new System.Windows.Forms.Button();
+            this.RestoreButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -61,6 +62,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.RestoreButton);
             this.splitContainer1.Panel1.Controls.Add(this.RemoveVarButton);
             this.splitContainer1.Panel1.Controls.Add(this.VarList);
             // 
@@ -78,6 +80,17 @@
             this.splitContainer1.SplitterDistance = 274;
             this.splitContainer1.TabIndex = 3;
             this.splitContainer1.TabStop = false;
+            // 
+            // RemoveVarButton
+            // 
+            this.RemoveVarButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.RemoveVarButton.Location = new System.Drawing.Point(3, 403);
+            this.RemoveVarButton.Name = "RemoveVarButton";
+            this.RemoveVarButton.Size = new System.Drawing.Size(75, 23);
+            this.RemoveVarButton.TabIndex = 1;
+            this.RemoveVarButton.Text = "Remove";
+            this.RemoveVarButton.UseVisualStyleBackColor = true;
+            this.RemoveVarButton.Click += new System.EventHandler(this.RemoveVarButton_Click);
             // 
             // VarList
             // 
@@ -257,16 +270,16 @@
             this.ResetButton.UseVisualStyleBackColor = true;
             this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
-            // RemoveVarButton
+            // RestoreButton
             // 
-            this.RemoveVarButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RemoveVarButton.Location = new System.Drawing.Point(3, 403);
-            this.RemoveVarButton.Name = "RemoveVarButton";
-            this.RemoveVarButton.Size = new System.Drawing.Size(75, 23);
-            this.RemoveVarButton.TabIndex = 1;
-            this.RemoveVarButton.Text = "Remove";
-            this.RemoveVarButton.UseVisualStyleBackColor = true;
-            this.RemoveVarButton.Click += new System.EventHandler(this.RemoveVarButton_Click);
+            this.RestoreButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.RestoreButton.Location = new System.Drawing.Point(84, 403);
+            this.RestoreButton.Name = "RestoreButton";
+            this.RestoreButton.Size = new System.Drawing.Size(75, 23);
+            this.RestoreButton.TabIndex = 2;
+            this.RestoreButton.Text = "Restore";
+            this.RestoreButton.UseVisualStyleBackColor = true;
+            this.RestoreButton.Click += new System.EventHandler(this.RestoreVarButton_Click);
             // 
             // EnvEditor
             // 
@@ -307,6 +320,7 @@
         private System.Windows.Forms.Button ExportButton;
         private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.Button RemoveVarButton;
+        private System.Windows.Forms.Button RestoreButton;
 
     }
 }

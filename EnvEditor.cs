@@ -211,6 +211,11 @@ namespace EEdit
             LoadEnvironment(environment.EnvTarget);
         }
 
+        private void RestoreVarButton_Click(object sender, EventArgs e)
+        {
+            RestoreSelectedVariable();
+        }
+
         #endregion
 
         private void BackupExistingEnvironment()
@@ -257,6 +262,19 @@ namespace EEdit
 
             value.UpdateState(EnvValueState.Deleted);
             UpdateVarStateIndicators();
+            UpdateButtonState();
+        }
+
+        private void RestoreSelectedVariable()
+        {
+            ListViewItem item = VarList.SelectedItems[0];
+            if (item.Text == NewItemText) return;
+
+            EnvValue value = environment.Variables[item.Text];
+
+            value.ResetState();
+            value.UpdateState(EnvValueState.Edited);
+            UpdateButtonState();
         }
 
         public void LoadEnvironment(EnvironmentVariableTarget target)
@@ -304,6 +322,19 @@ namespace EEdit
             DownButton.Enabled = selection && ValueList.SelectedIndices[0] < ValueList.Items.Count - 2;
             BottomButton.Enabled = selection && ValueList.SelectedIndices[0] < ValueList.Items.Count - 2;
             RemoveEntryButton.Enabled = selection && ValueList.SelectedIndices[0] > 0 && ValueList.SelectedIndices[0] < ValueList.Items.Count - 1;
+
+            ListViewItem item = VarList.SelectedItems[0];
+            EnvValue value = environment.Variables[item.Text];
+            if (value.State == EnvValueState.Deleted)
+            {
+                RemoveVarButton.Enabled = false;
+                RestoreButton.Enabled = true;
+            }
+            else
+            {
+                RemoveVarButton.Enabled = true;
+                RestoreButton.Enabled = false;
+            }
         }
 
         private void UpdateVarStateIndicators()
