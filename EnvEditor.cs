@@ -35,7 +35,7 @@ namespace EEdit
             list.Columns[0].Width = list.Width - 22; // 22 = slightly wider than the vertical scroll bar that appears
         }
 
-        private void ValueList_AfterLabelEdit(object sender, LabelEditEventArgs e)
+        private void EntryList_AfterLabelEdit(object sender, LabelEditEventArgs e)
         {
             if (e.Label == null)
             {
@@ -66,17 +66,17 @@ namespace EEdit
             Clipboard.SetText(ValueDisplay.Text);
         }
 
-        private void ValueList_SelectedIndexChanged(object sender, EventArgs e)
+        private void EntryList_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateButtonState();
         }
 
         private void TopButton_Click(object sender, EventArgs e)
         {
-            if (this.ValueList.SelectedIndices.Count == 0)
+            if (this.EntryList.SelectedIndices.Count == 0)
                 return;
 
-            ListViewItem item = this.ValueList.SelectedItems[0];
+            ListViewItem item = this.EntryList.SelectedItems[0];
             EnvValue value = ((EnvValue)item.Tag);
             value.Edited = true;
             value.Entries.Move(item.Index, 0);
@@ -84,10 +84,10 @@ namespace EEdit
 
         private void UpButton_Click(object sender, EventArgs e)
         {
-            if (this.ValueList.SelectedIndices.Count == 0)
+            if (this.EntryList.SelectedIndices.Count == 0)
                 return;
 
-            ListViewItem item = this.ValueList.SelectedItems[0];
+            ListViewItem item = this.EntryList.SelectedItems[0];
 
             if (item.Index > 0)
             {
@@ -99,12 +99,12 @@ namespace EEdit
 
         private void DownButton_Click(object sender, EventArgs e)
         {
-            if (this.ValueList.SelectedIndices.Count == 0)
+            if (this.EntryList.SelectedIndices.Count == 0)
                 return;
 
-            ListViewItem item = this.ValueList.SelectedItems[0];
+            ListViewItem item = this.EntryList.SelectedItems[0];
 
-            if (item.Index < ValueList.Items.Count - 1)
+            if (item.Index < EntryList.Items.Count - 1)
             {
                 EnvValue value = ((EnvValue)item.Tag);
                 value.Edited = true;
@@ -114,18 +114,18 @@ namespace EEdit
 
         private void BottomButton_Click(object sender, EventArgs e)
         {
-            if (this.ValueList.SelectedIndices.Count == 0)
+            if (this.EntryList.SelectedIndices.Count == 0)
                 return;
 
-            ListViewItem item = this.ValueList.SelectedItems[0];
+            ListViewItem item = this.EntryList.SelectedItems[0];
             EnvValue value = ((EnvValue)item.Tag);
             value.Edited = true;
-            value.Entries.Move(item.Index, ValueList.Items.Count - 2);
+            value.Entries.Move(item.Index, EntryList.Items.Count - 2);
         }
 
-        private void ValueList_KeyDown(object sender, KeyEventArgs e)
+        private void EntryList_KeyDown(object sender, KeyEventArgs e)
         {
-            if (ValueList.SelectedIndices.Count == 0) return;
+            if (EntryList.SelectedIndices.Count == 0) return;
             
             switch (e.KeyCode)
             {
@@ -134,7 +134,7 @@ namespace EEdit
                     break;
 
                 case Keys.Enter:
-                    ListViewItem item = ValueList.SelectedItems[0];
+                    ListViewItem item = EntryList.SelectedItems[0];
                     item.BeginEdit();
                     break;
             }
@@ -246,7 +246,7 @@ namespace EEdit
 
         public void RemoveSelectedEntry()
         {
-            ListViewItem item = ValueList.SelectedItems[0];
+            ListViewItem item = EntryList.SelectedItems[0];
             EnvValue value = (EnvValue)item.Tag;
 
             if (value == null) return;
@@ -317,13 +317,13 @@ namespace EEdit
 
         private void UpdateButtonState()
         {
-            bool selection = (ValueList.SelectedIndices.Count > 0);
+            bool selection = (EntryList.SelectedIndices.Count > 0);
 
-            TopButton.Enabled = selection && ValueList.SelectedIndices[0] > 0 && ValueList.SelectedIndices[0] < ValueList.Items.Count - 1;
-            UpButton.Enabled = selection && ValueList.SelectedIndices[0] > 0 && ValueList.SelectedIndices[0] < ValueList.Items.Count - 1;
-            DownButton.Enabled = selection && ValueList.SelectedIndices[0] < ValueList.Items.Count - 2;
-            BottomButton.Enabled = selection && ValueList.SelectedIndices[0] < ValueList.Items.Count - 2;
-            RemoveEntryButton.Enabled = selection && ValueList.SelectedIndices[0] < ValueList.Items.Count - 1;
+            TopButton.Enabled = selection && EntryList.SelectedIndices[0] > 0 && EntryList.SelectedIndices[0] < EntryList.Items.Count - 1;
+            UpButton.Enabled = selection && EntryList.SelectedIndices[0] > 0 && EntryList.SelectedIndices[0] < EntryList.Items.Count - 1;
+            DownButton.Enabled = selection && EntryList.SelectedIndices[0] < EntryList.Items.Count - 2;
+            BottomButton.Enabled = selection && EntryList.SelectedIndices[0] < EntryList.Items.Count - 2;
+            RemoveEntryButton.Enabled = selection && EntryList.SelectedIndices[0] < EntryList.Items.Count - 1;
 
             ListViewItem item = VarList.SelectedItems[0];
             EnvValue value = environment.Variables[item.Text];
@@ -353,7 +353,7 @@ namespace EEdit
 
         private void LoadValues()
         {
-            ValueList.Items.Clear();
+            EntryList.Items.Clear();
             if (VarList.SelectedIndices.Count == 0 || VarList.SelectedIndices[0] == VarList.Items.Count - 1)
                 return;
 
@@ -363,12 +363,12 @@ namespace EEdit
             {
                 ListViewItem item = new ListViewItem(entry);
                 item.Tag = value;
-                ValueList.Items.Add(item);
+                EntryList.Items.Add(item);
             }
 
-            ValueList.Items.Add(new ListViewItem(NewItemText));
+            EntryList.Items.Add(new ListViewItem(NewItemText));
 
-            ValueList.Focus();
+            EntryList.Focus();
 
             UpdateVarStateIndicators();
             UpdateButtonState();
@@ -380,7 +380,7 @@ namespace EEdit
 
             if (e.NewStartingIndex >= 0)
             {
-                ValueList.Items[e.NewStartingIndex].Selected = true;
+                EntryList.Items[e.NewStartingIndex].Selected = true;
             }
         }
     }

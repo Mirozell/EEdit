@@ -39,7 +39,7 @@
             this.TopButton = new System.Windows.Forms.Button();
             this.CopyValueButton = new System.Windows.Forms.Button();
             this.ValueDisplay = new System.Windows.Forms.TextBox();
-            this.ValueList = new System.Windows.Forms.ListView();
+            this.EntryList = new System.Windows.Forms.ListView();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SaveButton = new System.Windows.Forms.Button();
             this.BackupButton = new System.Windows.Forms.Button();
@@ -75,7 +75,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.TopButton);
             this.splitContainer1.Panel2.Controls.Add(this.CopyValueButton);
             this.splitContainer1.Panel2.Controls.Add(this.ValueDisplay);
-            this.splitContainer1.Panel2.Controls.Add(this.ValueList);
+            this.splitContainer1.Panel2.Controls.Add(this.EntryList);
             this.splitContainer1.Size = new System.Drawing.Size(828, 429);
             this.splitContainer1.SplitterDistance = 274;
             this.splitContainer1.TabIndex = 3;
@@ -202,29 +202,29 @@
             this.ValueDisplay.Size = new System.Drawing.Size(463, 20);
             this.ValueDisplay.TabIndex = 2;
             // 
-            // ValueList
+            // EntryList
             // 
-            this.ValueList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.EntryList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.ValueList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.EntryList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader2});
-            this.ValueList.FullRowSelect = true;
-            this.ValueList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.ValueList.HideSelection = false;
-            this.ValueList.LabelEdit = true;
-            this.ValueList.LabelWrap = false;
-            this.ValueList.Location = new System.Drawing.Point(3, 34);
-            this.ValueList.MultiSelect = false;
-            this.ValueList.Name = "ValueList";
-            this.ValueList.Size = new System.Drawing.Size(463, 392);
-            this.ValueList.TabIndex = 1;
-            this.ValueList.UseCompatibleStateImageBehavior = false;
-            this.ValueList.View = System.Windows.Forms.View.Details;
-            this.ValueList.AfterLabelEdit += new System.Windows.Forms.LabelEditEventHandler(this.ValueList_AfterLabelEdit);
-            this.ValueList.SelectedIndexChanged += new System.EventHandler(this.ValueList_SelectedIndexChanged);
-            this.ValueList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ValueList_KeyDown);
-            this.ValueList.Resize += new System.EventHandler(this.List_SizeChanged);
+            this.EntryList.FullRowSelect = true;
+            this.EntryList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.EntryList.HideSelection = false;
+            this.EntryList.LabelEdit = true;
+            this.EntryList.LabelWrap = false;
+            this.EntryList.Location = new System.Drawing.Point(3, 34);
+            this.EntryList.MultiSelect = false;
+            this.EntryList.Name = "EntryList";
+            this.EntryList.Size = new System.Drawing.Size(463, 392);
+            this.EntryList.TabIndex = 1;
+            this.EntryList.UseCompatibleStateImageBehavior = false;
+            this.EntryList.View = System.Windows.Forms.View.Details;
+            this.EntryList.AfterLabelEdit += new System.Windows.Forms.LabelEditEventHandler(this.EntryList_AfterLabelEdit);
+            this.EntryList.SelectedIndexChanged += new System.EventHandler(this.EntryList_SelectedIndexChanged);
+            this.EntryList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EntryList_KeyDown);
+            this.EntryList.Resize += new System.EventHandler(this.List_SizeChanged);
             // 
             // columnHeader2
             // 
@@ -312,7 +312,7 @@
         private System.Windows.Forms.Button TopButton;
         private System.Windows.Forms.Button CopyValueButton;
         private System.Windows.Forms.TextBox ValueDisplay;
-        private System.Windows.Forms.ListView ValueList;
+        private System.Windows.Forms.ListView EntryList;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.Button RemoveEntryButton;
         private System.Windows.Forms.Button SaveButton;
