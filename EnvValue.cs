@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 
 namespace EEdit
 {
-    class EnvValue
+    class EnvVariable
     {
         public string Variable { get; private set; }
 
@@ -18,7 +18,7 @@ namespace EEdit
 
         private string splitChar = ";";
 
-        public EnvValue(string variable, string value)
+        public EnvVariable(string variable, string value)
         {
             if (string.IsNullOrWhiteSpace(variable)) throw new ArgumentException("Variable cannot be null, empty, or whitespace", "Variable");
 

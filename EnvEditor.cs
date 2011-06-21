@@ -43,7 +43,7 @@ namespace EEdit
                 return;
             }
 
-            EnvValue value = environment.Values[VarList.SelectedItems[0].Text];
+            EnvVariable value = environment.Variables[VarList.SelectedItems[0].Text];
             value.Edited = true;
 
             if (string.IsNullOrWhiteSpace(e.Label))
@@ -77,7 +77,7 @@ namespace EEdit
                 return;
 
             ListViewItem item = EntryList.SelectedItems[0];
-            EnvValue value = ((EnvValue)item.Tag);
+            EnvVariable value = ((EnvVariable)item.Tag);
             value.Edited = true;
             value.Entries.Move(item.Index, 0);
         }
@@ -91,7 +91,7 @@ namespace EEdit
 
             if (item.Index > 0)
             {
-                EnvValue value = ((EnvValue)item.Tag);
+                EnvVariable value = ((EnvVariable)item.Tag);
                 value.Edited = true;
                 value.Entries.Move(item.Index, item.Index - 1);
             }
@@ -106,7 +106,7 @@ namespace EEdit
 
             if (item.Index < EntryList.Items.Count - 1)
             {
-                EnvValue value = ((EnvValue)item.Tag);
+                EnvVariable value = ((EnvVariable)item.Tag);
                 value.Edited = true;
                 value.Entries.Move(item.Index, item.Index + 1);
             }
@@ -118,7 +118,7 @@ namespace EEdit
                 return;
 
             ListViewItem item = EntryList.SelectedItems[0];
-            EnvValue value = ((EnvValue)item.Tag);
+            EnvVariable value = ((EnvVariable)item.Tag);
             value.Edited = true;
             value.Entries.Move(item.Index, EntryList.Items.Count - 2);
         }
@@ -172,8 +172,8 @@ namespace EEdit
                 return;
             }
 
-            EnvValue value = new EnvValue(e.Label, "") { Added = true };
-            environment.Values[e.Label] = value;
+            EnvVariable value = new EnvVariable(e.Label, "") { Added = true };
+            environment.Variables[e.Label] = value;
             value.Entries.CollectionChanged += new NotifyCollectionChangedEventHandler(Entries_CollectionChanged);
 
             VarList.Items[e.Item].Text = e.Label;
@@ -247,7 +247,7 @@ namespace EEdit
         public void RemoveSelectedEntry()
         {
             ListViewItem item = EntryList.SelectedItems[0];
-            EnvValue value = (EnvValue)item.Tag;
+            EnvVariable value = (EnvVariable)item.Tag;
 
             if (value == null) return;
 
@@ -261,7 +261,7 @@ namespace EEdit
             ListViewItem item = VarList.SelectedItems[0];
             if (item.Text == NewItemText) return;
 
-            EnvValue value = environment.Values[item.Text];
+            EnvVariable value = environment.Variables[item.Text];
 
             value.Deleted = true;
             UpdateVarStateIndicators();
@@ -273,7 +273,7 @@ namespace EEdit
             ListViewItem item = VarList.SelectedItems[0];
             if (item.Text == NewItemText) return;
 
-            EnvValue value = environment.Values[item.Text];
+            EnvVariable value = environment.Variables[item.Text];
             value.Deleted = false;
             
             UpdateButtonState();
@@ -284,10 +284,10 @@ namespace EEdit
             VarList.Items.Clear();
 
             environment = new EnvModel(target);
-            foreach (string variable in environment.Values.Keys)
+            foreach (string variable in environment.Variables.Keys)
             {
                 VarList.Items.Add(variable);
-                environment.Values[variable].Entries.CollectionChanged += new NotifyCollectionChangedEventHandler(Entries_CollectionChanged);
+                environment.Variables[variable].Entries.CollectionChanged += new NotifyCollectionChangedEventHandler(Entries_CollectionChanged);
             }
 
             VarList.Items.Add(new ListViewItem(NewItemText));
@@ -303,7 +303,7 @@ namespace EEdit
 
         private ListViewItem GetVariableItem(string variable)
         {
-            for (int i = 0; i < environment.Values.Count; i++)
+            for (int i = 0; i < environment.Variables.Count; i++)
             {
                 ListViewItem item = VarList.Items[i];
                 if (item.Text.ToLower() == variable)
@@ -326,9 +326,9 @@ namespace EEdit
             RemoveEntryButton.Enabled = selection && EntryList.SelectedIndices[0] < EntryList.Items.Count - 1;
 
             ListViewItem item = VarList.SelectedItems[0];
-            EnvValue value = environment.Values[item.Text];
+            EnvVariable value = environment.Variables[item.Text];
 
-            RestoreButton.Enabled = value.Deleted;
+            RestoreVarButton.Enabled = value.Deleted;
             RemoveVarButton.Enabled = !value.Deleted;
         }
 
@@ -338,12 +338,12 @@ namespace EEdit
             {
                 if (item.Text == NewItemText) continue;
 
-                EnvValue value = environment.Values[item.Text];
+                EnvVariable value = environment.Variables[item.Text];
                 item.BackColor = GetIndicatorColor(value);
             }
         }
 
-        private Color GetIndicatorColor(EnvValue value)
+        private Color GetIndicatorColor(EnvVariable value)
         {
             return (value.Deleted) ? Color.Pink :
                    (value.Added) ? Color.LightGreen :
@@ -357,7 +357,7 @@ namespace EEdit
             if (VarList.SelectedIndices.Count == 0 || VarList.SelectedIndices[0] == VarList.Items.Count - 1)
                 return;
 
-            EnvValue value = environment.Values[VarList.SelectedItems[0].Text];
+            EnvVariable value = environment.Variables[VarList.SelectedItems[0].Text];
             ValueDisplay.Text = value.FullValue;
             foreach (string entry in value.Entries)
             {

@@ -14,18 +14,18 @@ namespace EEdit
         private const string CurrentUserEnvironmentLocation = @"Environment";
 
         public EnvironmentVariableTarget EnvTarget { get; private set; }
-        public Dictionary<string, EnvValue> Values;
+        public Dictionary<string, EnvVariable> Variables;
 
         public EnvModel(EnvironmentVariableTarget target)
         {
             EnvTarget = target;
-            Values = new Dictionary<string, EnvValue>();
+            Variables = new Dictionary<string, EnvVariable>();
             Load();
         }
 
         private void Load()
         {
-            Values.Clear();
+            Variables.Clear();
 
             RegistryKey root = null;
             string location = null;
@@ -48,7 +48,7 @@ namespace EEdit
             {
                 foreach (string variable in key.GetValueNames())
                 {
-                    Values[variable] = new EnvValue(variable, key.GetValue(variable, "", RegistryValueOptions.DoNotExpandEnvironmentNames) as string);
+                    Variables[variable] = new EnvVariable(variable, key.GetValue(variable, "", RegistryValueOptions.DoNotExpandEnvironmentNames) as string);
                 }
             }
         }
@@ -57,7 +57,7 @@ namespace EEdit
         {
             StringBuilder output = new StringBuilder();
 
-            foreach (EnvValue value in Values.Values)
+            foreach (EnvVariable value in Variables.Values)
             {
                 if (value.Deleted) continue;
 
@@ -69,7 +69,7 @@ namespace EEdit
 
         public void Save()
         {
-            foreach (EnvValue value in Values.Values.ToArray())
+            foreach (EnvVariable value in Variables.Values.ToArray())
             {
                 value.CleanUp();
 
@@ -82,7 +82,7 @@ namespace EEdit
                 else if (value.Deleted)
                 {
                     Environment.SetEnvironmentVariable(value.Variable, "", EnvTarget);
-                    Values.Remove(value.Variable);
+                    Variables.Remove(value.Variable);
                 }
             }
         }
