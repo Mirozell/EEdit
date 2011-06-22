@@ -99,6 +99,9 @@
             // 
             // UserEditor
             // 
+            this.UserEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.UserEditor.Location = new System.Drawing.Point(0, 0);
             this.UserEditor.Name = "UserEditor";
             this.UserEditor.Size = new System.Drawing.Size(665, 392);
