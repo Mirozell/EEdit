@@ -88,21 +88,46 @@ namespace EEdit
 
         public void Save()
         {
-            foreach (EnvVariable value in Variables.Values.ToArray())
+            RegistryKey root = null;
+            string location = null;
+
+            switch (EnvTarget)
             {
-                value.CleanUp();
+                case EnvironmentVariableTarget.Machine:
+                    root = Registry.LocalMachine;
+                    location = LocalMachineEnvironmentLocation;
+                    break;
+                case EnvironmentVariableTarget.User:
+                    root = Registry.CurrentUser;
+                    location = CurrentUserEnvironmentLocation;
+                    break;
+                case EnvironmentVariableTarget.Process:
+                    throw new NotSupportedException("Process environment variables will have no other effects.");
+            }
 
-                if (value.Edited || value.Added)
+            using (RegistryKey key = root.OpenSubKey(location, true))
+            {
+                foreach (EnvVariable value in Variables.Values.ToArray())
                 {
-                    Environment.SetEnvironmentVariable(value.Variable, value.FullValue, EnvTarget);
-                }
-                else if (value.Deleted)
-                {
-                    Environment.SetEnvironmentVariable(value.Variable, "", EnvTarget);
-                    Variables.Remove(value.Variable);
-                }
+                    value.CleanUp();
 
-                value.ClearChangeStates();
+                    if (value.Edited || value.Added)
+                    {
+                        string fullvalue = value.FullValue;
+                        
+                        // Set registry entry to expand variables if at least a pair of % are in the value.
+                        RegistryValueKind kind = (fullvalue.IndexOf('%', fullvalue.IndexOf('%')) >= 0) ?  RegistryValueKind.ExpandString : RegistryValueKind.String;
+
+                        key.SetValue(value.Variable, fullvalue, kind);
+                    }
+                    else if (value.Deleted)
+                    {
+                        key.DeleteValue(value.Variable);
+                        Variables.Remove(value.Variable);
+                    }
+
+                    value.ClearChangeStates();
+                }
             }
         }
 
