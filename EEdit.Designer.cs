@@ -34,7 +34,9 @@
             this.UserTab = new System.Windows.Forms.TabPage();
             this.UserEditor = new EEdit.EnvEditor();
             this.AboutTab = new System.Windows.Forms.TabPage();
-            this.label8 = new System.Windows.Forms.Label();
+            this.LicenseLink = new System.Windows.Forms.LinkLabel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.VersionLabel = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -43,8 +45,6 @@
             this.WebsiteLink = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.LicenseLink = new System.Windows.Forms.LinkLabel();
             this.EnvSelectionTabs.SuspendLayout();
             this.MachineTab.SuspendLayout();
             this.UserTab.SuspendLayout();
@@ -108,7 +108,7 @@
             // 
             this.AboutTab.Controls.Add(this.LicenseLink);
             this.AboutTab.Controls.Add(this.label9);
-            this.AboutTab.Controls.Add(this.label8);
+            this.AboutTab.Controls.Add(this.VersionLabel);
             this.AboutTab.Controls.Add(this.label7);
             this.AboutTab.Controls.Add(this.label6);
             this.AboutTab.Controls.Add(this.label5);
@@ -124,15 +124,37 @@
             this.AboutTab.Text = "About";
             this.AboutTab.UseVisualStyleBackColor = true;
             // 
-            // label8
+            // LicenseLink
             // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(286, 227);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(22, 13);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "1.0";
+            this.LicenseLink.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.LicenseLink.AutoSize = true;
+            this.LicenseLink.Location = new System.Drawing.Point(286, 263);
+            this.LicenseLink.Name = "LicenseLink";
+            this.LicenseLink.Size = new System.Drawing.Size(40, 13);
+            this.LicenseLink.TabIndex = 10;
+            this.LicenseLink.TabStop = true;
+            this.LicenseLink.Text = "GPLv3";
+            this.LicenseLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LicenseLink_LinkClicked);
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(233, 263);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(47, 13);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "License:";
+            // 
+            // VersionLabel
+            // 
+            this.VersionLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.VersionLabel.AutoSize = true;
+            this.VersionLabel.Location = new System.Drawing.Point(286, 227);
+            this.VersionLabel.Name = "VersionLabel";
+            this.VersionLabel.Size = new System.Drawing.Size(123, 13);
+            this.VersionLabel.TabIndex = 8;
+            this.VersionLabel.Text = "current assembly version";
             // 
             // label7
             // 
@@ -215,28 +237,6 @@
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 0;
             // 
-            // label9
-            // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(233, 263);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(47, 13);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "License:";
-            // 
-            // LicenseLink
-            // 
-            this.LicenseLink.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.LicenseLink.AutoSize = true;
-            this.LicenseLink.Location = new System.Drawing.Point(286, 263);
-            this.LicenseLink.Name = "LicenseLink";
-            this.LicenseLink.Size = new System.Drawing.Size(40, 13);
-            this.LicenseLink.TabIndex = 10;
-            this.LicenseLink.TabStop = true;
-            this.LicenseLink.Text = "GPLv3";
-            this.LicenseLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LicenseLink_LinkClicked);
-            // 
             // EEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,7 +264,7 @@
         private System.Windows.Forms.TabPage UserTab;
         private EnvEditor UserEditor;
         private System.Windows.Forms.TabPage AboutTab;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label VersionLabel;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;

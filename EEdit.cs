@@ -35,6 +35,7 @@ namespace EEdit
         {
             MachineEditor.LoadEnvironment(EnvironmentVariableTarget.Machine);
             UserEditor.LoadEnvironment(EnvironmentVariableTarget.User);
+            VersionLabel.Text = Application.ProductVersion;
         }
 
         private void WebsiteLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
