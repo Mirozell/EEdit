@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections.Specialized;
+using System.Security;
 
 namespace EEdit
 {
@@ -204,10 +205,17 @@ namespace EEdit
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            environment.Save();
+            try
+            {
+                environment.Save();
 
-            // TODO: Don't reload from scratch. 
-            LoadEnvironment(environment.EnvTarget);
+                // TODO: Don't reload from scratch. 
+                LoadEnvironment(environment.EnvTarget);
+            }
+            catch (SecurityException)
+            {
+                MessageBox.Show("Permission denied. Unable to save.", "Security Error");
+            }
         }
 
         private void RestoreVarButton_Click(object sender, EventArgs e)
