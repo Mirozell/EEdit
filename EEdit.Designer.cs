@@ -30,7 +30,9 @@
         {
             this.EnvSelectionTabs = new System.Windows.Forms.TabControl();
             this.MachineTab = new System.Windows.Forms.TabPage();
+            this.MachineEditor = new EEdit.EnvEditor();
             this.UserTab = new System.Windows.Forms.TabPage();
+            this.UserEditor = new EEdit.EnvEditor();
             this.AboutTab = new System.Windows.Forms.TabPage();
             this.LicenseLink = new System.Windows.Forms.LinkLabel();
             this.label9 = new System.Windows.Forms.Label();
@@ -43,8 +45,6 @@
             this.WebsiteLink = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.MachineEditor = new EEdit.EnvEditor();
-            this.UserEditor = new EEdit.EnvEditor();
             this.EnvSelectionTabs.SuspendLayout();
             this.MachineTab.SuspendLayout();
             this.UserTab.SuspendLayout();
@@ -53,16 +53,14 @@
             // 
             // EnvSelectionTabs
             // 
-            this.EnvSelectionTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
             this.EnvSelectionTabs.Controls.Add(this.MachineTab);
             this.EnvSelectionTabs.Controls.Add(this.UserTab);
             this.EnvSelectionTabs.Controls.Add(this.AboutTab);
-            this.EnvSelectionTabs.Location = new System.Drawing.Point(12, 12);
+            this.EnvSelectionTabs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.EnvSelectionTabs.Location = new System.Drawing.Point(0, 0);
             this.EnvSelectionTabs.Name = "EnvSelectionTabs";
             this.EnvSelectionTabs.SelectedIndex = 0;
-            this.EnvSelectionTabs.Size = new System.Drawing.Size(690, 437);
+            this.EnvSelectionTabs.Size = new System.Drawing.Size(714, 461);
             this.EnvSelectionTabs.TabIndex = 1;
             // 
             // MachineTab
@@ -71,10 +69,19 @@
             this.MachineTab.Location = new System.Drawing.Point(4, 22);
             this.MachineTab.Name = "MachineTab";
             this.MachineTab.Padding = new System.Windows.Forms.Padding(3);
-            this.MachineTab.Size = new System.Drawing.Size(682, 411);
+            this.MachineTab.Size = new System.Drawing.Size(706, 435);
             this.MachineTab.TabIndex = 0;
             this.MachineTab.Text = "Machine";
             this.MachineTab.UseVisualStyleBackColor = true;
+            // 
+            // MachineEditor
+            // 
+            this.MachineEditor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MachineEditor.Location = new System.Drawing.Point(3, 3);
+            this.MachineEditor.MinimumSize = new System.Drawing.Size(484, 307);
+            this.MachineEditor.Name = "MachineEditor";
+            this.MachineEditor.Size = new System.Drawing.Size(700, 429);
+            this.MachineEditor.TabIndex = 0;
             // 
             // UserTab
             // 
@@ -82,10 +89,21 @@
             this.UserTab.Location = new System.Drawing.Point(4, 22);
             this.UserTab.Name = "UserTab";
             this.UserTab.Padding = new System.Windows.Forms.Padding(3);
-            this.UserTab.Size = new System.Drawing.Size(682, 411);
+            this.UserTab.Size = new System.Drawing.Size(706, 435);
             this.UserTab.TabIndex = 1;
             this.UserTab.Text = "User";
             this.UserTab.UseVisualStyleBackColor = true;
+            // 
+            // UserEditor
+            // 
+            this.UserEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.UserEditor.Location = new System.Drawing.Point(0, 0);
+            this.UserEditor.MinimumSize = new System.Drawing.Size(484, 307);
+            this.UserEditor.Name = "UserEditor";
+            this.UserEditor.Size = new System.Drawing.Size(689, 416);
+            this.UserEditor.TabIndex = 0;
             // 
             // AboutTab
             // 
@@ -102,7 +120,7 @@
             this.AboutTab.Controls.Add(this.label1);
             this.AboutTab.Location = new System.Drawing.Point(4, 22);
             this.AboutTab.Name = "AboutTab";
-            this.AboutTab.Size = new System.Drawing.Size(682, 411);
+            this.AboutTab.Size = new System.Drawing.Size(706, 435);
             this.AboutTab.TabIndex = 2;
             this.AboutTab.Text = "About";
             this.AboutTab.UseVisualStyleBackColor = true;
@@ -111,7 +129,7 @@
             // 
             this.LicenseLink.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.LicenseLink.AutoSize = true;
-            this.LicenseLink.Location = new System.Drawing.Point(286, 263);
+            this.LicenseLink.Location = new System.Drawing.Point(298, 263);
             this.LicenseLink.Name = "LicenseLink";
             this.LicenseLink.Size = new System.Drawing.Size(40, 13);
             this.LicenseLink.TabIndex = 10;
@@ -123,7 +141,7 @@
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(233, 263);
+            this.label9.Location = new System.Drawing.Point(245, 263);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(47, 13);
             this.label9.TabIndex = 9;
@@ -133,7 +151,7 @@
             // 
             this.VersionLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.VersionLabel.AutoSize = true;
-            this.VersionLabel.Location = new System.Drawing.Point(286, 227);
+            this.VersionLabel.Location = new System.Drawing.Point(298, 227);
             this.VersionLabel.Name = "VersionLabel";
             this.VersionLabel.Size = new System.Drawing.Size(123, 13);
             this.VersionLabel.TabIndex = 8;
@@ -143,7 +161,7 @@
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(235, 227);
+            this.label7.Location = new System.Drawing.Point(247, 227);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(45, 13);
             this.label7.TabIndex = 7;
@@ -153,7 +171,7 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(286, 191);
+            this.label6.Location = new System.Drawing.Point(298, 191);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(42, 13);
             this.label6.TabIndex = 6;
@@ -163,7 +181,7 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(239, 191);
+            this.label5.Location = new System.Drawing.Point(251, 191);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 13);
             this.label5.TabIndex = 5;
@@ -173,7 +191,7 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(244, 87);
+            this.label4.Location = new System.Drawing.Point(256, 87);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(194, 13);
             this.label4.TabIndex = 4;
@@ -184,7 +202,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(311, 32);
+            this.label3.Location = new System.Drawing.Point(323, 32);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 24);
             this.label3.TabIndex = 3;
@@ -194,7 +212,7 @@
             // 
             this.WebsiteLink.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.WebsiteLink.AutoSize = true;
-            this.WebsiteLink.Location = new System.Drawing.Point(286, 155);
+            this.WebsiteLink.Location = new System.Drawing.Point(298, 155);
             this.WebsiteLink.Name = "WebsiteLink";
             this.WebsiteLink.Size = new System.Drawing.Size(165, 13);
             this.WebsiteLink.TabIndex = 2;
@@ -206,7 +224,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(231, 155);
+            this.label2.Location = new System.Drawing.Point(243, 155);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 1;
@@ -219,28 +237,6 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 0;
-            // 
-            // MachineEditor
-            // 
-            this.MachineEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.MachineEditor.Location = new System.Drawing.Point(0, 0);
-            this.MachineEditor.MinimumSize = new System.Drawing.Size(484, 307);
-            this.MachineEditor.Name = "MachineEditor";
-            this.MachineEditor.Size = new System.Drawing.Size(665, 392);
-            this.MachineEditor.TabIndex = 0;
-            // 
-            // UserEditor
-            // 
-            this.UserEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.UserEditor.Location = new System.Drawing.Point(0, 0);
-            this.UserEditor.MinimumSize = new System.Drawing.Size(484, 307);
-            this.UserEditor.Name = "UserEditor";
-            this.UserEditor.Size = new System.Drawing.Size(665, 392);
-            this.UserEditor.TabIndex = 0;
             // 
             // EEditForm
             // 

@@ -67,6 +67,13 @@ namespace EEdit.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap CopyToClipboard {
+            get {
+                object obj = ResourceManager.GetObject("CopyToClipboard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap Down {
             get {
                 object obj = ResourceManager.GetObject("Down", resourceCulture);
