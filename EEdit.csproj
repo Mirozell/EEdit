@@ -124,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icons\Bottom.ico" />
+    <Content Include="Icons\CopyToClipboard.ico" />
     <Content Include="Icons\Down.ico" />
     <Content Include="Icons\RedX.ico" />
     <Content Include="Icons\Up.ico" />
