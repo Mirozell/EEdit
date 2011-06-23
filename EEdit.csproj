@@ -93,10 +93,8 @@
     <Compile Include="EEdit.Designer.cs">
       <DependentUpon>EEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="EnvVariable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="EnvModel.cs" />
     <EmbeddedResource Include="EEdit.resx">
       <DependentUpon>EEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,6 +127,12 @@
     <Content Include="Icons\Down.ico" />
     <Content Include="Icons\RedX.ico" />
     <Content Include="Icons\Up.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Environment\Environment.csproj">
+      <Project>{E0FA6856-CD79-47E5-8C16-FDCAF6D6A575}</Project>
+      <Name>Environment</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
