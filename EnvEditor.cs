@@ -191,6 +191,8 @@ namespace EEdit
             VarList.Items[e.Item].Text = e.Label;
             VarList.Items.Add(new ListViewItem(NewItemText));
             LoadValues();
+
+            EntryList.Items[0].BeginEdit();
         }
 
         private void RemoveEntryButton_Click(object sender, EventArgs e)
