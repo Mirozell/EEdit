@@ -23,6 +23,7 @@ using System.Collections.Specialized;
 using System.Drawing;
 using System.Security;
 using System.Windows.Forms;
+using EEdit.Environment;
 
 namespace EEdit
 {
@@ -292,8 +293,7 @@ namespace EEdit
             ListViewItem item = VarList.SelectedItems[0];
             if (item.Text == NewItemText) return;
 
-            EnvVariable value = environment.Variables[item.Text];
-            value.ClearDeletedState();
+            environment.RestoreVariable(item.Text);
 
             UpdateButtonState();
         }
