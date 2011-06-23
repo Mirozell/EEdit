@@ -33,6 +33,11 @@
             this.RemoveVarButton = new System.Windows.Forms.Button();
             this.VarList = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.RemoveEntryButton = new System.Windows.Forms.Button();
+            this.BottomButton = new System.Windows.Forms.Button();
+            this.DownButton = new System.Windows.Forms.Button();
+            this.UpButton = new System.Windows.Forms.Button();
+            this.TopButton = new System.Windows.Forms.Button();
             this.CopyValueButton = new System.Windows.Forms.Button();
             this.ValueDisplay = new System.Windows.Forms.TextBox();
             this.EntryList = new System.Windows.Forms.ListView();
@@ -41,11 +46,6 @@
             this.BackupButton = new System.Windows.Forms.Button();
             this.ExportButton = new System.Windows.Forms.Button();
             this.ResetButton = new System.Windows.Forms.Button();
-            this.RemoveEntryButton = new System.Windows.Forms.Button();
-            this.BottomButton = new System.Windows.Forms.Button();
-            this.DownButton = new System.Windows.Forms.Button();
-            this.UpButton = new System.Windows.Forms.Button();
-            this.TopButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -132,6 +132,66 @@
             // 
             this.columnHeader1.Width = 147;
             // 
+            // RemoveEntryButton
+            // 
+            this.RemoveEntryButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.RemoveEntryButton.Enabled = false;
+            this.RemoveEntryButton.Image = global::EEdit.Properties.Resources.RedX;
+            this.RemoveEntryButton.Location = new System.Drawing.Point(402, 238);
+            this.RemoveEntryButton.Name = "RemoveEntryButton";
+            this.RemoveEntryButton.Size = new System.Drawing.Size(38, 35);
+            this.RemoveEntryButton.TabIndex = 8;
+            this.RemoveEntryButton.UseVisualStyleBackColor = true;
+            this.RemoveEntryButton.Click += new System.EventHandler(this.RemoveEntryButton_Click);
+            // 
+            // BottomButton
+            // 
+            this.BottomButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BottomButton.Enabled = false;
+            this.BottomButton.Image = global::EEdit.Properties.Resources.Bottom;
+            this.BottomButton.Location = new System.Drawing.Point(402, 180);
+            this.BottomButton.Name = "BottomButton";
+            this.BottomButton.Size = new System.Drawing.Size(38, 38);
+            this.BottomButton.TabIndex = 7;
+            this.BottomButton.UseVisualStyleBackColor = true;
+            this.BottomButton.Click += new System.EventHandler(this.BottomButton_Click);
+            // 
+            // DownButton
+            // 
+            this.DownButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DownButton.Enabled = false;
+            this.DownButton.Image = global::EEdit.Properties.Resources.Down;
+            this.DownButton.Location = new System.Drawing.Point(402, 136);
+            this.DownButton.Name = "DownButton";
+            this.DownButton.Size = new System.Drawing.Size(38, 38);
+            this.DownButton.TabIndex = 6;
+            this.DownButton.UseVisualStyleBackColor = true;
+            this.DownButton.Click += new System.EventHandler(this.DownButton_Click);
+            // 
+            // UpButton
+            // 
+            this.UpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.UpButton.Enabled = false;
+            this.UpButton.Image = global::EEdit.Properties.Resources.Up;
+            this.UpButton.Location = new System.Drawing.Point(402, 76);
+            this.UpButton.Name = "UpButton";
+            this.UpButton.Size = new System.Drawing.Size(38, 38);
+            this.UpButton.TabIndex = 5;
+            this.UpButton.UseVisualStyleBackColor = true;
+            this.UpButton.Click += new System.EventHandler(this.UpButton_Click);
+            // 
+            // TopButton
+            // 
+            this.TopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TopButton.Enabled = false;
+            this.TopButton.Image = global::EEdit.Properties.Resources.Top;
+            this.TopButton.Location = new System.Drawing.Point(402, 34);
+            this.TopButton.Name = "TopButton";
+            this.TopButton.Size = new System.Drawing.Size(38, 36);
+            this.TopButton.TabIndex = 4;
+            this.TopButton.UseVisualStyleBackColor = true;
+            this.TopButton.Click += new System.EventHandler(this.TopButton_Click);
+            // 
             // CopyValueButton
             // 
             this.CopyValueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -150,7 +210,7 @@
             this.ValueDisplay.Location = new System.Drawing.Point(3, 3);
             this.ValueDisplay.Name = "ValueDisplay";
             this.ValueDisplay.ReadOnly = true;
-            this.ValueDisplay.Size = new System.Drawing.Size(372, 20);
+            this.ValueDisplay.Size = new System.Drawing.Size(393, 20);
             this.ValueDisplay.TabIndex = 2;
             // 
             // EntryList
@@ -168,7 +228,7 @@
             this.EntryList.Location = new System.Drawing.Point(3, 34);
             this.EntryList.MultiSelect = false;
             this.EntryList.Name = "EntryList";
-            this.EntryList.Size = new System.Drawing.Size(430, 392);
+            this.EntryList.Size = new System.Drawing.Size(393, 392);
             this.EntryList.TabIndex = 1;
             this.EntryList.UseCompatibleStateImageBehavior = false;
             this.EntryList.View = System.Windows.Forms.View.Details;
@@ -221,66 +281,6 @@
             this.ResetButton.UseVisualStyleBackColor = true;
             this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
-            // RemoveEntryButton
-            // 
-            this.RemoveEntryButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.RemoveEntryButton.Enabled = false;
-            this.RemoveEntryButton.Image = global::EEdit.Properties.Resources.RedX;
-            this.RemoveEntryButton.Location = new System.Drawing.Point(439, 238);
-            this.RemoveEntryButton.Name = "RemoveEntryButton";
-            this.RemoveEntryButton.Size = new System.Drawing.Size(38, 35);
-            this.RemoveEntryButton.TabIndex = 8;
-            this.RemoveEntryButton.UseVisualStyleBackColor = true;
-            this.RemoveEntryButton.Click += new System.EventHandler(this.RemoveEntryButton_Click);
-            // 
-            // BottomButton
-            // 
-            this.BottomButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BottomButton.Enabled = false;
-            this.BottomButton.Image = global::EEdit.Properties.Resources.Bottom;
-            this.BottomButton.Location = new System.Drawing.Point(439, 180);
-            this.BottomButton.Name = "BottomButton";
-            this.BottomButton.Size = new System.Drawing.Size(38, 38);
-            this.BottomButton.TabIndex = 7;
-            this.BottomButton.UseVisualStyleBackColor = true;
-            this.BottomButton.Click += new System.EventHandler(this.BottomButton_Click);
-            // 
-            // DownButton
-            // 
-            this.DownButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DownButton.Enabled = false;
-            this.DownButton.Image = global::EEdit.Properties.Resources.Down;
-            this.DownButton.Location = new System.Drawing.Point(439, 136);
-            this.DownButton.Name = "DownButton";
-            this.DownButton.Size = new System.Drawing.Size(38, 38);
-            this.DownButton.TabIndex = 6;
-            this.DownButton.UseVisualStyleBackColor = true;
-            this.DownButton.Click += new System.EventHandler(this.DownButton_Click);
-            // 
-            // UpButton
-            // 
-            this.UpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.UpButton.Enabled = false;
-            this.UpButton.Image = global::EEdit.Properties.Resources.Up;
-            this.UpButton.Location = new System.Drawing.Point(439, 76);
-            this.UpButton.Name = "UpButton";
-            this.UpButton.Size = new System.Drawing.Size(38, 38);
-            this.UpButton.TabIndex = 5;
-            this.UpButton.UseVisualStyleBackColor = true;
-            this.UpButton.Click += new System.EventHandler(this.UpButton_Click);
-            // 
-            // TopButton
-            // 
-            this.TopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TopButton.Enabled = false;
-            this.TopButton.Image = global::EEdit.Properties.Resources.Top;
-            this.TopButton.Location = new System.Drawing.Point(439, 34);
-            this.TopButton.Name = "TopButton";
-            this.TopButton.Size = new System.Drawing.Size(38, 36);
-            this.TopButton.TabIndex = 4;
-            this.TopButton.UseVisualStyleBackColor = true;
-            this.TopButton.Click += new System.EventHandler(this.TopButton_Click);
-            // 
             // EnvEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,6 +290,7 @@
             this.Controls.Add(this.BackupButton);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.splitContainer1);
+            this.MinimumSize = new System.Drawing.Size(484, 307);
             this.Name = "EnvEditor";
             this.Size = new System.Drawing.Size(722, 461);
             this.splitContainer1.Panel1.ResumeLayout(false);
