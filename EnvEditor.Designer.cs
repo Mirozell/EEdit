@@ -156,7 +156,7 @@
             this.RemoveEntryButton.Enabled = false;
             this.RemoveEntryButton.ImageIndex = 3;
             this.RemoveEntryButton.ImageList = this.imageList32;
-            this.RemoveEntryButton.Location = new System.Drawing.Point(402, 264);
+            this.RemoveEntryButton.Location = new System.Drawing.Point(439, 266);
             this.RemoveEntryButton.Name = "RemoveEntryButton";
             this.RemoveEntryButton.Size = new System.Drawing.Size(38, 35);
             this.RemoveEntryButton.TabIndex = 8;
@@ -181,7 +181,7 @@
             this.BottomButton.Enabled = false;
             this.BottomButton.ImageIndex = 0;
             this.BottomButton.ImageList = this.imageList32;
-            this.BottomButton.Location = new System.Drawing.Point(402, 206);
+            this.BottomButton.Location = new System.Drawing.Point(439, 206);
             this.BottomButton.Name = "BottomButton";
             this.BottomButton.Size = new System.Drawing.Size(38, 38);
             this.BottomButton.TabIndex = 7;
@@ -195,7 +195,7 @@
             this.DownButton.Enabled = false;
             this.DownButton.ImageIndex = 2;
             this.DownButton.ImageList = this.imageList32;
-            this.DownButton.Location = new System.Drawing.Point(402, 162);
+            this.DownButton.Location = new System.Drawing.Point(439, 162);
             this.DownButton.Name = "DownButton";
             this.DownButton.Size = new System.Drawing.Size(38, 38);
             this.DownButton.TabIndex = 6;
@@ -209,7 +209,7 @@
             this.UpButton.Enabled = false;
             this.UpButton.ImageIndex = 5;
             this.UpButton.ImageList = this.imageList32;
-            this.UpButton.Location = new System.Drawing.Point(402, 102);
+            this.UpButton.Location = new System.Drawing.Point(439, 102);
             this.UpButton.Name = "UpButton";
             this.UpButton.Size = new System.Drawing.Size(38, 38);
             this.UpButton.TabIndex = 5;
@@ -223,7 +223,7 @@
             this.TopButton.Enabled = false;
             this.TopButton.ImageIndex = 4;
             this.TopButton.ImageList = this.imageList32;
-            this.TopButton.Location = new System.Drawing.Point(402, 60);
+            this.TopButton.Location = new System.Drawing.Point(439, 60);
             this.TopButton.Name = "TopButton";
             this.TopButton.Size = new System.Drawing.Size(38, 36);
             this.TopButton.TabIndex = 4;
@@ -236,7 +236,7 @@
             this.CopyValueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CopyValueButton.ImageIndex = 1;
             this.CopyValueButton.ImageList = this.imageList32;
-            this.CopyValueButton.Location = new System.Drawing.Point(402, 3);
+            this.CopyValueButton.Location = new System.Drawing.Point(439, 3);
             this.CopyValueButton.Name = "CopyValueButton";
             this.CopyValueButton.Size = new System.Drawing.Size(38, 46);
             this.CopyValueButton.TabIndex = 3;
@@ -252,7 +252,7 @@
             this.ValueDisplay.Multiline = true;
             this.ValueDisplay.Name = "ValueDisplay";
             this.ValueDisplay.ReadOnly = true;
-            this.ValueDisplay.Size = new System.Drawing.Size(393, 46);
+            this.ValueDisplay.Size = new System.Drawing.Size(430, 46);
             this.ValueDisplay.TabIndex = 2;
             // 
             // EntryList
@@ -270,7 +270,7 @@
             this.EntryList.Location = new System.Drawing.Point(3, 60);
             this.EntryList.MultiSelect = false;
             this.EntryList.Name = "EntryList";
-            this.EntryList.Size = new System.Drawing.Size(393, 366);
+            this.EntryList.Size = new System.Drawing.Size(430, 366);
             this.EntryList.TabIndex = 1;
             this.EntryList.UseCompatibleStateImageBehavior = false;
             this.EntryList.View = System.Windows.Forms.View.Details;
