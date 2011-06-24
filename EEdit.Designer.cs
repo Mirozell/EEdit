@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EEditForm));
             this.EnvSelectionTabs = new System.Windows.Forms.TabControl();
             this.MachineTab = new System.Windows.Forms.TabPage();
-            this.MachineEditor = new EEdit.EnvEditor();
             this.UserTab = new System.Windows.Forms.TabPage();
-            this.UserEditor = new EEdit.EnvEditor();
             this.AboutTab = new System.Windows.Forms.TabPage();
             this.LicenseLink = new System.Windows.Forms.LinkLabel();
             this.label9 = new System.Windows.Forms.Label();
@@ -45,6 +44,8 @@
             this.WebsiteLink = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.MachineEditor = new EEdit.EnvEditor();
+            this.UserEditor = new EEdit.EnvEditor();
             this.EnvSelectionTabs.SuspendLayout();
             this.MachineTab.SuspendLayout();
             this.UserTab.SuspendLayout();
@@ -74,15 +75,6 @@
             this.MachineTab.Text = "Machine";
             this.MachineTab.UseVisualStyleBackColor = true;
             // 
-            // MachineEditor
-            // 
-            this.MachineEditor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MachineEditor.Location = new System.Drawing.Point(3, 3);
-            this.MachineEditor.MinimumSize = new System.Drawing.Size(484, 307);
-            this.MachineEditor.Name = "MachineEditor";
-            this.MachineEditor.Size = new System.Drawing.Size(700, 429);
-            this.MachineEditor.TabIndex = 0;
-            // 
             // UserTab
             // 
             this.UserTab.Controls.Add(this.UserEditor);
@@ -93,17 +85,6 @@
             this.UserTab.TabIndex = 1;
             this.UserTab.Text = "User";
             this.UserTab.UseVisualStyleBackColor = true;
-            // 
-            // UserEditor
-            // 
-            this.UserEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.UserEditor.Location = new System.Drawing.Point(0, 0);
-            this.UserEditor.MinimumSize = new System.Drawing.Size(484, 307);
-            this.UserEditor.Name = "UserEditor";
-            this.UserEditor.Size = new System.Drawing.Size(689, 416);
-            this.UserEditor.TabIndex = 0;
             // 
             // AboutTab
             // 
@@ -238,12 +219,31 @@
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 0;
             // 
+            // MachineEditor
+            // 
+            this.MachineEditor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MachineEditor.Location = new System.Drawing.Point(3, 3);
+            this.MachineEditor.MinimumSize = new System.Drawing.Size(484, 307);
+            this.MachineEditor.Name = "MachineEditor";
+            this.MachineEditor.Size = new System.Drawing.Size(700, 429);
+            this.MachineEditor.TabIndex = 0;
+            // 
+            // UserEditor
+            // 
+            this.UserEditor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UserEditor.Location = new System.Drawing.Point(3, 3);
+            this.UserEditor.MinimumSize = new System.Drawing.Size(484, 307);
+            this.UserEditor.Name = "UserEditor";
+            this.UserEditor.Size = new System.Drawing.Size(700, 429);
+            this.UserEditor.TabIndex = 0;
+            // 
             // EEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(714, 461);
             this.Controls.Add(this.EnvSelectionTabs);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(547, 413);
             this.Name = "EEditForm";
             this.Text = "EEdit";

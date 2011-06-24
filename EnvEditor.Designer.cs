@@ -64,7 +64,7 @@
             this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Location = new System.Drawing.Point(0, 32);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 48);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -82,7 +82,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.CopyValueButton);
             this.splitContainer1.Panel2.Controls.Add(this.ValueDisplay);
             this.splitContainer1.Panel2.Controls.Add(this.EntryList);
-            this.splitContainer1.Size = new System.Drawing.Size(722, 429);
+            this.splitContainer1.Size = new System.Drawing.Size(722, 413);
             this.splitContainer1.SplitterDistance = 238;
             this.splitContainer1.TabIndex = 3;
             this.splitContainer1.TabStop = false;
@@ -92,7 +92,7 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.removeEnvironmentVariable,
             this.restoreEnvironmentVariable});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 391);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 375);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(238, 38);
             this.statusStrip1.TabIndex = 3;
@@ -135,10 +135,10 @@
             this.VarList.HideSelection = false;
             this.VarList.LabelEdit = true;
             this.VarList.LabelWrap = false;
-            this.VarList.Location = new System.Drawing.Point(0, 0);
+            this.VarList.Location = new System.Drawing.Point(0, 3);
             this.VarList.MultiSelect = false;
             this.VarList.Name = "VarList";
-            this.VarList.Size = new System.Drawing.Size(238, 388);
+            this.VarList.Size = new System.Drawing.Size(238, 369);
             this.VarList.TabIndex = 0;
             this.VarList.UseCompatibleStateImageBehavior = false;
             this.VarList.View = System.Windows.Forms.View.Details;
@@ -176,6 +176,7 @@
             this.imageList32.Images.SetKeyName(3, "RedX.ico");
             this.imageList32.Images.SetKeyName(4, "Top.ico");
             this.imageList32.Images.SetKeyName(5, "Up.ico");
+            this.imageList32.Images.SetKeyName(6, "Save.ico");
             // 
             // BottomButton
             // 
@@ -272,7 +273,7 @@
             this.EntryList.Location = new System.Drawing.Point(3, 60);
             this.EntryList.MultiSelect = false;
             this.EntryList.Name = "EntryList";
-            this.EntryList.Size = new System.Drawing.Size(430, 366);
+            this.EntryList.Size = new System.Drawing.Size(430, 350);
             this.EntryList.TabIndex = 1;
             this.EntryList.UseCompatibleStateImageBehavior = false;
             this.EntryList.View = System.Windows.Forms.View.Details;
@@ -287,18 +288,19 @@
             // 
             // SaveButton
             // 
+            this.SaveButton.ImageIndex = 6;
+            this.SaveButton.ImageList = this.imageList32;
             this.SaveButton.Location = new System.Drawing.Point(3, 3);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(75, 23);
+            this.SaveButton.Size = new System.Drawing.Size(42, 39);
             this.SaveButton.TabIndex = 4;
-            this.SaveButton.Text = "Save";
             this.toolTip1.SetToolTip(this.SaveButton, "Save Environment Variables");
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // BackupButton
             // 
-            this.BackupButton.Location = new System.Drawing.Point(165, 3);
+            this.BackupButton.Location = new System.Drawing.Point(132, 11);
             this.BackupButton.Name = "BackupButton";
             this.BackupButton.Size = new System.Drawing.Size(75, 23);
             this.BackupButton.TabIndex = 5;
@@ -309,7 +311,7 @@
             // 
             // ExportButton
             // 
-            this.ExportButton.Location = new System.Drawing.Point(84, 3);
+            this.ExportButton.Location = new System.Drawing.Point(51, 11);
             this.ExportButton.Name = "ExportButton";
             this.ExportButton.Size = new System.Drawing.Size(75, 23);
             this.ExportButton.TabIndex = 6;
@@ -320,7 +322,7 @@
             // 
             // ResetButton
             // 
-            this.ResetButton.Location = new System.Drawing.Point(246, 3);
+            this.ResetButton.Location = new System.Drawing.Point(213, 11);
             this.ResetButton.Name = "ResetButton";
             this.ResetButton.Size = new System.Drawing.Size(75, 23);
             this.ResetButton.TabIndex = 7;
@@ -339,6 +341,7 @@
             this.imageList16.Images.SetKeyName(3, "RedX.ico");
             this.imageList16.Images.SetKeyName(4, "Top.ico");
             this.imageList16.Images.SetKeyName(5, "Up.ico");
+            this.imageList16.Images.SetKeyName(6, "Save.ico");
             // 
             // EnvEditor
             // 
