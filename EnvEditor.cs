@@ -347,8 +347,8 @@ namespace EEdit
             ListViewItem item = VarList.SelectedItems[0];
             EnvVariable value = environment.Variables[item.Text];
 
-            this.restoreEnvironmentVariable.Enabled = value.Deleted;
-            this.removeEnvironmentVariable.Enabled = !value.Deleted;
+            this.RestoreVarButton.Enabled = value.Deleted;
+            this.RemoveVarButton.Enabled = !value.Deleted;
         }
 
         private void UpdateVarStateIndicators()
