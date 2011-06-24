@@ -86,7 +86,7 @@ namespace EEdit.Environment
                         string fullvalue = value.FullValue;
                         
                         // Set registry entry to expand variables if at least a pair of % are in the value.
-                        RegistryValueKind kind = (fullvalue.IndexOf('%', fullvalue.IndexOf('%')) >= 0) ?  RegistryValueKind.ExpandString : RegistryValueKind.String;
+                        RegistryValueKind kind = (fullvalue.Count((c) => { return c == '%'; }) > 1) ? RegistryValueKind.ExpandString : RegistryValueKind.String;
 
                         key.SetValue(value.Variable, fullvalue, kind);
                     }
@@ -98,6 +98,9 @@ namespace EEdit.Environment
 
                     value.ClearChangeStates();
                 }
+                
+                // Easy way to generate the system message for running processes to update their environment.
+                System.Environment.SetEnvironmentVariable("{5C9B8AF1-22D4-4e53-B3B5-1C6116051B64}", string.Empty, EnvTarget);
             }
         }
 
