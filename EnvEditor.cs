@@ -24,6 +24,7 @@ using System.Drawing;
 using System.Security;
 using System.Windows.Forms;
 using EEdit.Environment;
+using System.Collections.Generic;
 
 namespace EEdit
 {
@@ -303,7 +304,11 @@ namespace EEdit
             VarList.Items.Clear();
 
             environment = new EnvModel(target);
-            foreach (string variable in environment.Variables.Keys)
+
+            List<string> variables = new List<string>(environment.Variables.Keys);
+            variables.Sort();
+
+            foreach (string variable in variables)
             {
                 VarList.Items.Add(variable);
                 environment.Variables[variable].CollectionChanged += new NotifyCollectionChangedEventHandler(Entries_CollectionChanged);
