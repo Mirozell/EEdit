@@ -125,9 +125,11 @@
             // 
             // VarList
             // 
+            this.VarList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.VarList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
-            this.VarList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.VarList.FullRowSelect = true;
             this.VarList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.VarList.HideSelection = false;
@@ -136,7 +138,7 @@
             this.VarList.Location = new System.Drawing.Point(0, 0);
             this.VarList.MultiSelect = false;
             this.VarList.Name = "VarList";
-            this.VarList.Size = new System.Drawing.Size(238, 429);
+            this.VarList.Size = new System.Drawing.Size(238, 388);
             this.VarList.TabIndex = 0;
             this.VarList.UseCompatibleStateImageBehavior = false;
             this.VarList.View = System.Windows.Forms.View.Details;
