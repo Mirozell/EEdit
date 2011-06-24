@@ -88,6 +88,13 @@ namespace EEdit.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Restore {
+            get {
+                object obj = ResourceManager.GetObject("Restore", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap Top {
             get {
                 object obj = ResourceManager.GetObject("Top", resourceCulture);

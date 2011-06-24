@@ -127,6 +127,7 @@
     <Content Include="Icons\CopyToClipboard.ico" />
     <Content Include="Icons\Down.ico" />
     <Content Include="Icons\RedX.ico" />
+    <Content Include="Icons\Restore.ico" />
     <Content Include="Icons\Up.ico" />
   </ItemGroup>
   <ItemGroup>

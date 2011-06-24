@@ -211,7 +211,7 @@ namespace EEdit
             ExportEnvironment();
         }
 
-        private void ResetButton_Click(object sender, EventArgs e)
+        private void Reset_Click(object sender, EventArgs e)
         {
             LoadEnvironment(environment.EnvTarget);
         }
@@ -236,7 +236,7 @@ namespace EEdit
             }
         }
 
-        private void RestoreVarButton_Click(object sender, EventArgs e)
+        private void RestoreVariable_Click(object sender, EventArgs e)
         {
             RestoreSelectedVariable();
         }
@@ -347,8 +347,8 @@ namespace EEdit
             ListViewItem item = VarList.SelectedItems[0];
             EnvVariable value = environment.Variables[item.Text];
 
-            RestoreVarButton.Enabled = value.Deleted;
-            RemoveVarButton.Enabled = !value.Deleted;
+            this.restoreEnvironmentVariable.Enabled = value.Deleted;
+            this.removeEnvironmentVariable.Enabled = !value.Deleted;
         }
 
         private void UpdateVarStateIndicators()
