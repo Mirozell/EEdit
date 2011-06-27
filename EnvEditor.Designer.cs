@@ -47,7 +47,6 @@
             this.ValueDisplay = new System.Windows.Forms.TextBox();
             this.EntryList = new System.Windows.Forms.ListView();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.BackupButton = new System.Windows.Forms.Button();
             this.ExportButton = new System.Windows.Forms.Button();
             this.ResetButton = new System.Windows.Forms.Button();
             this.imageList16 = new System.Windows.Forms.ImageList(this.components);
@@ -303,17 +302,6 @@
             // 
             this.columnHeader2.Width = 303;
             // 
-            // BackupButton
-            // 
-            this.BackupButton.Location = new System.Drawing.Point(132, 11);
-            this.BackupButton.Name = "BackupButton";
-            this.BackupButton.Size = new System.Drawing.Size(75, 23);
-            this.BackupButton.TabIndex = 5;
-            this.BackupButton.Text = "Backup";
-            this.toolTip1.SetToolTip(this.BackupButton, "Back up to File");
-            this.BackupButton.UseVisualStyleBackColor = true;
-            this.BackupButton.Click += new System.EventHandler(this.BackupButton_Click);
-            // 
             // ExportButton
             // 
             this.ExportButton.Location = new System.Drawing.Point(51, 11);
@@ -327,7 +315,7 @@
             // 
             // ResetButton
             // 
-            this.ResetButton.Location = new System.Drawing.Point(213, 11);
+            this.ResetButton.Location = new System.Drawing.Point(132, 11);
             this.ResetButton.Name = "ResetButton";
             this.ResetButton.Size = new System.Drawing.Size(75, 23);
             this.ResetButton.TabIndex = 7;
@@ -367,7 +355,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.ExportButton);
-            this.Controls.Add(this.BackupButton);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.splitContainer1);
             this.MinimumSize = new System.Drawing.Size(484, 307);
@@ -397,7 +384,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.Button RemoveEntryButton;
         private System.Windows.Forms.Button SaveButton;
-        private System.Windows.Forms.Button BackupButton;
         private System.Windows.Forms.Button ExportButton;
         private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.ImageList imageList32;

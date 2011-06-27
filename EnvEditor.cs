@@ -207,11 +207,6 @@ namespace EEdit
             LoadEnvironment(environment.EnvTarget);
         }
 
-        private void BackupButton_Click(object sender, EventArgs e)
-        {
-            BackupExistingEnvironment();
-        }
-
         private void SaveButton_Click(object sender, EventArgs e)
         {
             try
@@ -270,18 +265,6 @@ namespace EEdit
             {
                 if (!environment.Variables.ContainsKey(item.Text))
                     item.Remove();
-            }
-        }
-
-        private void BackupExistingEnvironment()
-        {
-            SaveFileDialog dlg = new SaveFileDialog();
-
-            if (dlg.ShowDialog() == DialogResult.OK)
-            {
-                string filepath = dlg.FileName;
-                EnvModel env = new EnvModel(environment.EnvTarget);
-                env.Export(filepath);
             }
         }
 
