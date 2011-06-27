@@ -93,11 +93,12 @@
             // NewVarButton
             // 
             this.NewVarButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.NewVarButton.ImageKey = "Add.ico";
+            this.NewVarButton.ImageList = this.imageList32;
             this.NewVarButton.Location = new System.Drawing.Point(0, 374);
             this.NewVarButton.Name = "NewVarButton";
             this.NewVarButton.Size = new System.Drawing.Size(38, 36);
             this.NewVarButton.TabIndex = 7;
-            this.NewVarButton.Text = "Add";
             this.toolTip1.SetToolTip(this.NewVarButton, "Delete");
             this.NewVarButton.UseVisualStyleBackColor = true;
             this.NewVarButton.Click += new System.EventHandler(this.NewVarButton_Click);
@@ -160,11 +161,12 @@
             // 
             this.AddEntryButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AddEntryButton.Enabled = false;
+            this.AddEntryButton.ImageKey = "Add.ico";
+            this.AddEntryButton.ImageList = this.imageList32;
             this.AddEntryButton.Location = new System.Drawing.Point(439, 281);
             this.AddEntryButton.Name = "AddEntryButton";
             this.AddEntryButton.Size = new System.Drawing.Size(38, 35);
             this.AddEntryButton.TabIndex = 9;
-            this.AddEntryButton.Text = "Add";
             this.toolTip1.SetToolTip(this.AddEntryButton, "Delete");
             this.AddEntryButton.UseVisualStyleBackColor = true;
             this.AddEntryButton.Click += new System.EventHandler(this.AddEntryButton_Click);
@@ -207,6 +209,7 @@
             this.imageList32.Images.SetKeyName(4, "Top.ico");
             this.imageList32.Images.SetKeyName(5, "Up.ico");
             this.imageList32.Images.SetKeyName(6, "Save.ico");
+            this.imageList32.Images.SetKeyName(7, "Add.ico");
             // 
             // DownButton
             // 
@@ -271,7 +274,6 @@
             this.ValueDisplay.ReadOnly = true;
             this.ValueDisplay.Size = new System.Drawing.Size(430, 20);
             this.ValueDisplay.TabIndex = 2;
-            this.ValueDisplay.TextChanged += new System.EventHandler(this.ValueDisplay_TextChanged);
             // 
             // EntryList
             // 
@@ -345,6 +347,7 @@
             this.imageList16.Images.SetKeyName(4, "Top.ico");
             this.imageList16.Images.SetKeyName(5, "Up.ico");
             this.imageList16.Images.SetKeyName(6, "Save.ico");
+            this.imageList16.Images.SetKeyName(7, "Add.ico");
             // 
             // SaveButton
             // 

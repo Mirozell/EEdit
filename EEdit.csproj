@@ -123,6 +123,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Icons\Add.ico" />
     <Content Include="Icons\Bottom.ico" />
     <Content Include="Icons\CopyToClipboard.ico" />
     <Content Include="Icons\Down.ico" />
