@@ -85,7 +85,7 @@ namespace EEdit.Environment
                     {
                         string fullvalue = value.FullValue;
                         
-                        // Set registry entry to expand variables if at least a pair of % are in the value.
+                        // Set the registry type to expand variables if at least a pair of % are in the value.
                         RegistryValueKind kind = (fullvalue.Count((c) => { return c == '%'; }) > 1) ? RegistryValueKind.ExpandString : RegistryValueKind.String;
 
                         key.SetValue(value.Variable, fullvalue, kind);
