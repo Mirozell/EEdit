@@ -234,6 +234,11 @@ namespace EEdit
 
         private void NewVarButton_Click(object sender, EventArgs e)
         {
+            AddVariable();
+        }
+
+        private void AddVariable()
+        {
             ListViewItem item = new ListViewItem();
             VarList.Items.Add(item);
             item.Selected = true;
