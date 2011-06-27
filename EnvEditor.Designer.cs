@@ -271,6 +271,7 @@
             this.ValueDisplay.ReadOnly = true;
             this.ValueDisplay.Size = new System.Drawing.Size(430, 20);
             this.ValueDisplay.TabIndex = 2;
+            this.ValueDisplay.TextChanged += new System.EventHandler(this.ValueDisplay_TextChanged);
             // 
             // EntryList
             // 
