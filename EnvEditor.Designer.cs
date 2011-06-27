@@ -267,7 +267,6 @@
             this.ValueDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.ValueDisplay.Location = new System.Drawing.Point(2, 3);
-            this.ValueDisplay.Multiline = true;
             this.ValueDisplay.Name = "ValueDisplay";
             this.ValueDisplay.ReadOnly = true;
             this.ValueDisplay.Size = new System.Drawing.Size(430, 20);
