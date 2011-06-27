@@ -217,9 +217,8 @@ namespace EEdit
             try
             {
                 environment.Save();
-
-                // TODO: Don't reload from scratch. 
-                LoadEnvironment(environment.EnvTarget);
+                RemoveDeletedVariables();
+                UpdateVarStateIndicators();
             }
             catch (SecurityException)
             {
@@ -264,6 +263,15 @@ namespace EEdit
         }
 
         #endregion
+
+        private void RemoveDeletedVariables()
+        {
+            foreach (ListViewItem item in VarList.Items)
+            {
+                if (!environment.Variables.ContainsKey(item.Text))
+                    item.Remove();
+            }
+        }
 
         private void BackupExistingEnvironment()
         {
