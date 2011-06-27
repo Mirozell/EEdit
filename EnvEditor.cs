@@ -299,12 +299,22 @@ namespace EEdit
         public void RemoveSelectedEntry()
         {
             ListViewItem item = EntryList.SelectedItems[0];
+            int index = item.Index;
             EnvVariable value = (EnvVariable)item.Tag;
 
             if (value == null) return;
 
             value.RemoveEntry(item.Index);
             LoadValues();
+
+            if (index < EntryList.Items.Count)
+            {
+                EntryList.Items[index].Selected = true;
+            }
+            else if (EntryList.Items.Count > 0)
+            {
+                EntryList.Items[index - 1].Selected = true;
+            }
         }
 
         private void RemoveSelectedVariable()
