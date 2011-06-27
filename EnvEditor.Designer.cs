@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EnvEditor));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.NewVarButton = new System.Windows.Forms.Button();
+            this.imageList32 = new System.Windows.Forms.ImageList(this.components);
             this.RestoreVarButton = new System.Windows.Forms.Button();
             this.RemoveVarButton = new System.Windows.Forms.Button();
             this.VarList = new System.Windows.Forms.ListView();
@@ -39,7 +40,6 @@
             this.AddEntryButton = new System.Windows.Forms.Button();
             this.RemoveEntryButton = new System.Windows.Forms.Button();
             this.BottomButton = new System.Windows.Forms.Button();
-            this.imageList32 = new System.Windows.Forms.ImageList(this.components);
             this.DownButton = new System.Windows.Forms.Button();
             this.UpButton = new System.Windows.Forms.Button();
             this.TopButton = new System.Windows.Forms.Button();
@@ -99,9 +99,22 @@
             this.NewVarButton.Name = "NewVarButton";
             this.NewVarButton.Size = new System.Drawing.Size(38, 36);
             this.NewVarButton.TabIndex = 7;
-            this.toolTip1.SetToolTip(this.NewVarButton, "Delete");
+            this.toolTip1.SetToolTip(this.NewVarButton, "Add");
             this.NewVarButton.UseVisualStyleBackColor = true;
             this.NewVarButton.Click += new System.EventHandler(this.NewVarButton_Click);
+            // 
+            // imageList32
+            // 
+            this.imageList32.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList32.ImageStream")));
+            this.imageList32.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList32.Images.SetKeyName(0, "Bottom.ico");
+            this.imageList32.Images.SetKeyName(1, "CopyToClipboard.ico");
+            this.imageList32.Images.SetKeyName(2, "Down.ico");
+            this.imageList32.Images.SetKeyName(3, "RedX.ico");
+            this.imageList32.Images.SetKeyName(4, "Top.ico");
+            this.imageList32.Images.SetKeyName(5, "Up.ico");
+            this.imageList32.Images.SetKeyName(6, "Save.ico");
+            this.imageList32.Images.SetKeyName(7, "Add.ico");
             // 
             // RestoreVarButton
             // 
@@ -167,7 +180,7 @@
             this.AddEntryButton.Name = "AddEntryButton";
             this.AddEntryButton.Size = new System.Drawing.Size(38, 35);
             this.AddEntryButton.TabIndex = 9;
-            this.toolTip1.SetToolTip(this.AddEntryButton, "Delete");
+            this.toolTip1.SetToolTip(this.AddEntryButton, "Add");
             this.AddEntryButton.UseVisualStyleBackColor = true;
             this.AddEntryButton.Click += new System.EventHandler(this.AddEntryButton_Click);
             // 
@@ -197,19 +210,6 @@
             this.toolTip1.SetToolTip(this.BottomButton, "Move to Bottom");
             this.BottomButton.UseVisualStyleBackColor = true;
             this.BottomButton.Click += new System.EventHandler(this.BottomButton_Click);
-            // 
-            // imageList32
-            // 
-            this.imageList32.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList32.ImageStream")));
-            this.imageList32.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList32.Images.SetKeyName(0, "Bottom.ico");
-            this.imageList32.Images.SetKeyName(1, "CopyToClipboard.ico");
-            this.imageList32.Images.SetKeyName(2, "Down.ico");
-            this.imageList32.Images.SetKeyName(3, "RedX.ico");
-            this.imageList32.Images.SetKeyName(4, "Top.ico");
-            this.imageList32.Images.SetKeyName(5, "Up.ico");
-            this.imageList32.Images.SetKeyName(6, "Save.ico");
-            this.imageList32.Images.SetKeyName(7, "Add.ico");
             // 
             // DownButton
             // 
