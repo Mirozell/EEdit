@@ -67,7 +67,7 @@
             this.AboutTab.Controls.Add(this.label1);
             this.AboutTab.Location = new System.Drawing.Point(4, 22);
             this.AboutTab.Name = "AboutTab";
-            this.AboutTab.Size = new System.Drawing.Size(706, 435);
+            this.AboutTab.Size = new System.Drawing.Size(694, 423);
             this.AboutTab.TabIndex = 2;
             this.AboutTab.Text = "About";
             this.AboutTab.UseVisualStyleBackColor = true;
@@ -191,7 +191,7 @@
             this.UserTab.Location = new System.Drawing.Point(4, 22);
             this.UserTab.Name = "UserTab";
             this.UserTab.Padding = new System.Windows.Forms.Padding(3);
-            this.UserTab.Size = new System.Drawing.Size(706, 435);
+            this.UserTab.Size = new System.Drawing.Size(694, 423);
             this.UserTab.TabIndex = 1;
             this.UserTab.Text = "User";
             this.UserTab.UseVisualStyleBackColor = true;
@@ -211,32 +211,32 @@
             this.MachineTab.Location = new System.Drawing.Point(4, 22);
             this.MachineTab.Name = "MachineTab";
             this.MachineTab.Padding = new System.Windows.Forms.Padding(3);
-            this.MachineTab.Size = new System.Drawing.Size(706, 435);
+            this.MachineTab.Size = new System.Drawing.Size(694, 423);
             this.MachineTab.TabIndex = 0;
             this.MachineTab.Text = "Machine";
             this.MachineTab.UseVisualStyleBackColor = true;
             // 
             // MachineEditor
             // 
-            this.MachineEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.MachineEditor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MachineEditor.Location = new System.Drawing.Point(3, 3);
             this.MachineEditor.MinimumSize = new System.Drawing.Size(484, 307);
             this.MachineEditor.Name = "MachineEditor";
-            this.MachineEditor.Size = new System.Drawing.Size(700, 429);
+            this.MachineEditor.Size = new System.Drawing.Size(688, 417);
             this.MachineEditor.TabIndex = 0;
             // 
             // EnvSelectionTabs
             // 
+            this.EnvSelectionTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.EnvSelectionTabs.Controls.Add(this.MachineTab);
             this.EnvSelectionTabs.Controls.Add(this.UserTab);
             this.EnvSelectionTabs.Controls.Add(this.AboutTab);
-            this.EnvSelectionTabs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.EnvSelectionTabs.Location = new System.Drawing.Point(0, 0);
+            this.EnvSelectionTabs.Location = new System.Drawing.Point(6, 6);
             this.EnvSelectionTabs.Name = "EnvSelectionTabs";
             this.EnvSelectionTabs.SelectedIndex = 0;
-            this.EnvSelectionTabs.Size = new System.Drawing.Size(714, 461);
+            this.EnvSelectionTabs.Size = new System.Drawing.Size(702, 449);
             this.EnvSelectionTabs.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.EnvSelectionTabs.TabIndex = 1;
             // 
@@ -249,7 +249,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(547, 413);
             this.Name = "EEditForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EEdit";
             this.Load += new System.EventHandler(this.EEdit_Load);
             this.AboutTab.ResumeLayout(false);

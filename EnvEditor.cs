@@ -24,13 +24,13 @@ using System.Drawing;
 using System.Security;
 using System.Windows.Forms;
 using EEdit.Environment;
+using System.Collections.Generic;
 
 namespace EEdit
 {
     public partial class EnvEditor : UserControl
     {
         private const string DefaultVariable = "path";
-        private const string NewItemText = "[New]";
 
         private EnvModel environment;
 
@@ -54,21 +54,14 @@ namespace EEdit
 
         private void EntryList_AfterLabelEdit(object sender, LabelEditEventArgs e)
         {
-            if (e.Label == null)
-            {
-                e.CancelEdit = true;
-                return;
-            }
+            // handle the update manually.  The list will refresh when value changes.
+            e.CancelEdit = true;
+            EntryList.LabelEdit = false;
+
+            if (e.Label == null || string.IsNullOrWhiteSpace(e.Label)) return;
 
             EnvVariable value = environment.Variables[VarList.SelectedItems[0].Text];
 
-            if (string.IsNullOrWhiteSpace(e.Label))
-            {
-                e.CancelEdit = true;
-                value.RemoveEntry(e.Item);
-                return;
-            }
-            
             if (e.Item == value.EntryCount)
                 value.AddEntry(e.Label);
             else
@@ -164,19 +157,15 @@ namespace EEdit
             }
         }
 
-        private void VarList_BeforeLabelEdit(object sender, LabelEditEventArgs e)
-        {
-            if (e.Item != VarList.Items.Count - 1)
-                e.CancelEdit = true;
-        }
-
         private void VarList_AfterLabelEdit(object sender, LabelEditEventArgs e)
         {
-            //handle the assignment manually, so LoadValues gets the new variable name
+            // handle the assignment manually, so LoadValues gets the new variable name
             e.CancelEdit = true;
+            VarList.LabelEdit = false;
 
             if (e.Label == null || string.IsNullOrWhiteSpace(e.Label)) return;
 
+            // if the variable already exists, select that one instead.
             ListViewItem existingItem = GetVariableItem(e.Label);
             if (existingItem != null)
             {
@@ -185,15 +174,17 @@ namespace EEdit
             }
 
             EnvVariable value = environment.AddVariable(e.Label);
-
-            environment.Variables[e.Label] = value;
             value.CollectionChanged += new NotifyCollectionChangedEventHandler(Entries_CollectionChanged);
 
-            VarList.Items[e.Item].Text = e.Label;
-            VarList.Items.Add(new ListViewItem(NewItemText));
+            ListViewItem item = VarList.Items[e.Item];
+            item.Text = value.Variable;
+
+            VarList.Sort();
+            item.EnsureVisible();
+
             LoadValues();
 
-            EntryList.Items[0].BeginEdit();
+            AddEntry();
         }
 
         private void RemoveEntryButton_Click(object sender, EventArgs e)
@@ -241,6 +232,32 @@ namespace EEdit
             RestoreSelectedVariable();
         }
 
+        private void NewVarButton_Click(object sender, EventArgs e)
+        {
+            ListViewItem item = new ListViewItem();
+            VarList.Items.Add(item);
+            item.Selected = true;
+            item.EnsureVisible();
+
+            VarList.LabelEdit = true;
+            item.BeginEdit();
+        }
+
+        private void AddEntryButton_Click(object sender, EventArgs e)
+        {
+            AddEntry();
+        }
+
+        private void AddEntry()
+        {
+            ListViewItem item = new ListViewItem();
+            EntryList.Items.Add(item);
+            item.EnsureVisible();
+
+            EntryList.LabelEdit = true;
+            item.BeginEdit();
+        }
+
         #endregion
 
         private void BackupExistingEnvironment()
@@ -280,7 +297,6 @@ namespace EEdit
         private void RemoveSelectedVariable()
         {
             ListViewItem item = VarList.SelectedItems[0];
-            if (item.Text == NewItemText) return;
 
             environment.RemoveVariable(item.Text);
 
@@ -291,8 +307,6 @@ namespace EEdit
         private void RestoreSelectedVariable()
         {
             ListViewItem item = VarList.SelectedItems[0];
-            if (item.Text == NewItemText) return;
-
             environment.RestoreVariable(item.Text);
 
             UpdateButtonState();
@@ -303,13 +317,12 @@ namespace EEdit
             VarList.Items.Clear();
 
             environment = new EnvModel(target);
+
             foreach (string variable in environment.Variables.Keys)
             {
                 VarList.Items.Add(variable);
                 environment.Variables[variable].CollectionChanged += new NotifyCollectionChangedEventHandler(Entries_CollectionChanged);
             }
-
-            VarList.Items.Add(new ListViewItem(NewItemText));
 
             SelectVariable(DefaultVariable);
         }
@@ -334,29 +347,29 @@ namespace EEdit
             return null;
         }
 
-        private void UpdateButtonState()
+        private void UpdateButtonState() 
         {
-            bool selection = (EntryList.SelectedIndices.Count > 0);
-
-            TopButton.Enabled = selection && EntryList.SelectedIndices[0] > 0 && EntryList.SelectedIndices[0] < EntryList.Items.Count - 1;
-            UpButton.Enabled = selection && EntryList.SelectedIndices[0] > 0 && EntryList.SelectedIndices[0] < EntryList.Items.Count - 1;
-            DownButton.Enabled = selection && EntryList.SelectedIndices[0] < EntryList.Items.Count - 2;
-            BottomButton.Enabled = selection && EntryList.SelectedIndices[0] < EntryList.Items.Count - 2;
-            RemoveEntryButton.Enabled = selection && EntryList.SelectedIndices[0] < EntryList.Items.Count - 1;
-
             ListViewItem item = VarList.SelectedItems[0];
             EnvVariable value = environment.Variables[item.Text];
 
-            this.restoreEnvironmentVariable.Enabled = value.Deleted;
-            this.removeEnvironmentVariable.Enabled = !value.Deleted;
+            RestoreVarButton.Enabled = value.Deleted;
+            RemoveVarButton.Enabled = !value.Deleted;
+
+            AddEntryButton.Enabled = (VarList.SelectedIndices.Count > 0);
+
+            bool selection = (EntryList.SelectedIndices.Count > 0);
+
+            TopButton.Enabled = selection && EntryList.SelectedIndices[0] > 0;
+            UpButton.Enabled = selection && EntryList.SelectedIndices[0] > 0;
+            DownButton.Enabled = selection && EntryList.SelectedIndices[0] < EntryList.Items.Count - 1;
+            BottomButton.Enabled = selection && EntryList.SelectedIndices[0] < EntryList.Items.Count - 1;
+            RemoveEntryButton.Enabled = selection;
         }
 
         private void UpdateVarStateIndicators()
         {
             foreach (ListViewItem item in VarList.Items)
             {
-                if (item.Text == NewItemText) continue;
-
                 EnvVariable value = environment.Variables[item.Text];
                 item.BackColor = GetIndicatorColor(value);
             }
@@ -373,10 +386,12 @@ namespace EEdit
         private void LoadValues()
         {
             EntryList.Items.Clear();
-            if (VarList.SelectedIndices.Count == 0 || VarList.SelectedIndices[0] == VarList.Items.Count - 1)
+            if (VarList.SelectedIndices.Count == 0)
                 return;
 
-            EnvVariable value = environment.Variables[VarList.SelectedItems[0].Text];
+            EnvVariable value;
+            if (!environment.Variables.TryGetValue(VarList.SelectedItems[0].Text, out value)) return;
+
             ValueDisplay.Text = value.FullValue;
             foreach (string entry in value.GetEntries())
             {
@@ -384,10 +399,6 @@ namespace EEdit
                 item.Tag = value;
                 EntryList.Items.Add(item);
             }
-
-            EntryList.Items.Add(new ListViewItem(NewItemText));
-
-            EntryList.Focus();
 
             UpdateVarStateIndicators();
             UpdateButtonState();
