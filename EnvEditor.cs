@@ -282,13 +282,11 @@ namespace EEdit
         public void RemoveSelectedEntry()
         {
             ListViewItem item = EntryList.SelectedItems[0];
-            int index = item.Index;
             EnvVariable value = (EnvVariable)item.Tag;
 
-            if (value == null) return;
-
-            value.RemoveEntry(item.Index);
-            LoadValues();
+            int index = item.Index;
+            value.RemoveEntry(index);
+            item.Remove();
 
             if (index < EntryList.Items.Count)
             {
