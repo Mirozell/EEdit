@@ -176,7 +176,12 @@ namespace EEdit
             EnvVariable value = environment.AddVariable(e.Label);
             value.CollectionChanged += new NotifyCollectionChangedEventHandler(Entries_CollectionChanged);
 
-            VarList.Items[e.Item].Text = value.Variable;
+            ListViewItem item = VarList.Items[e.Item];
+            item.Text = value.Variable;
+
+            VarList.Sort();
+            item.EnsureVisible();
+
             LoadValues();
 
             AddEntry();
@@ -231,6 +236,7 @@ namespace EEdit
         {
             ListViewItem item = new ListViewItem();
             VarList.Items.Add(item);
+            item.Selected = true;
             item.EnsureVisible();
 
             VarList.LabelEdit = true;
@@ -312,10 +318,7 @@ namespace EEdit
 
             environment = new EnvModel(target);
 
-            List<string> variables = new List<string>(environment.Variables.Keys);
-            variables.Sort();
-
-            foreach (string variable in variables)
+            foreach (string variable in environment.Variables.Keys)
             {
                 VarList.Items.Add(variable);
                 environment.Variables[variable].CollectionChanged += new NotifyCollectionChangedEventHandler(Entries_CollectionChanged);
@@ -386,7 +389,9 @@ namespace EEdit
             if (VarList.SelectedIndices.Count == 0)
                 return;
 
-            EnvVariable value = environment.Variables[VarList.SelectedItems[0].Text];
+            EnvVariable value;
+            if (!environment.Variables.TryGetValue(VarList.SelectedItems[0].Text, out value)) return;
+
             ValueDisplay.Text = value.FullValue;
             foreach (string entry in value.GetEntries())
             {

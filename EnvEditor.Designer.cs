@@ -143,6 +143,7 @@
             this.VarList.MultiSelect = false;
             this.VarList.Name = "VarList";
             this.VarList.Size = new System.Drawing.Size(238, 365);
+            this.VarList.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.VarList.TabIndex = 0;
             this.VarList.UseCompatibleStateImageBehavior = false;
             this.VarList.View = System.Windows.Forms.View.Details;
