@@ -207,19 +207,13 @@ namespace EEdit
             LoadEnvironment(environment.EnvTarget);
         }
 
-        private void BackupButton_Click(object sender, EventArgs e)
-        {
-            BackupExistingEnvironment();
-        }
-
         private void SaveButton_Click(object sender, EventArgs e)
         {
             try
             {
                 environment.Save();
-
-                // TODO: Don't reload from scratch. 
-                LoadEnvironment(environment.EnvTarget);
+                RemoveDeletedVariables();
+                UpdateVarStateIndicators();
             }
             catch (SecurityException)
             {
@@ -233,6 +227,11 @@ namespace EEdit
         }
 
         private void NewVarButton_Click(object sender, EventArgs e)
+        {
+            AddVariable();
+        }
+
+        private void AddVariable()
         {
             ListViewItem item = new ListViewItem();
             VarList.Items.Add(item);
@@ -270,15 +269,12 @@ namespace EEdit
 
         #endregion
 
-        private void BackupExistingEnvironment()
+        private void RemoveDeletedVariables()
         {
-            SaveFileDialog dlg = new SaveFileDialog();
-
-            if (dlg.ShowDialog() == DialogResult.OK)
+            foreach (ListViewItem item in VarList.Items)
             {
-                string filepath = dlg.FileName;
-                EnvModel env = new EnvModel(environment.EnvTarget);
-                env.Export(filepath);
+                if (!environment.Variables.ContainsKey(item.Text))
+                    item.Remove();
             }
         }
 
@@ -298,10 +294,18 @@ namespace EEdit
             ListViewItem item = EntryList.SelectedItems[0];
             EnvVariable value = (EnvVariable)item.Tag;
 
-            if (value == null) return;
+            int index = item.Index;
+            value.RemoveEntry(index);
+            item.Remove();
 
-            value.RemoveEntry(item.Index);
-            LoadValues();
+            if (index < EntryList.Items.Count)
+            {
+                EntryList.Items[index].Selected = true;
+            }
+            else if (EntryList.Items.Count > 0)
+            {
+                EntryList.Items[index - 1].Selected = true;
+            }
         }
 
         private void RemoveSelectedVariable()
