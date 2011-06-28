@@ -46,6 +46,8 @@
             this.MachineTab = new System.Windows.Forms.TabPage();
             this.MachineEditor = new EEdit.EnvEditor();
             this.EnvSelectionTabs = new System.Windows.Forms.TabControl();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.AboutTab.SuspendLayout();
             this.UserTab.SuspendLayout();
             this.MachineTab.SuspendLayout();
@@ -54,6 +56,8 @@
             // 
             // AboutTab
             // 
+            this.AboutTab.Controls.Add(this.label8);
+            this.AboutTab.Controls.Add(this.label10);
             this.AboutTab.Controls.Add(this.LicenseLink);
             this.AboutTab.Controls.Add(this.label9);
             this.AboutTab.Controls.Add(this.VersionLabel);
@@ -76,7 +80,7 @@
             // 
             this.LicenseLink.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.LicenseLink.AutoSize = true;
-            this.LicenseLink.Location = new System.Drawing.Point(301, 263);
+            this.LicenseLink.Location = new System.Drawing.Point(301, 267);
             this.LicenseLink.Name = "LicenseLink";
             this.LicenseLink.Size = new System.Drawing.Size(40, 13);
             this.LicenseLink.TabIndex = 10;
@@ -88,7 +92,7 @@
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(248, 263);
+            this.label9.Location = new System.Drawing.Point(248, 267);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(47, 13);
             this.label9.TabIndex = 9;
@@ -98,7 +102,7 @@
             // 
             this.VersionLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.VersionLabel.AutoSize = true;
-            this.VersionLabel.Location = new System.Drawing.Point(301, 227);
+            this.VersionLabel.Location = new System.Drawing.Point(301, 239);
             this.VersionLabel.Name = "VersionLabel";
             this.VersionLabel.Size = new System.Drawing.Size(123, 13);
             this.VersionLabel.TabIndex = 8;
@@ -108,7 +112,7 @@
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(250, 227);
+            this.label7.Location = new System.Drawing.Point(250, 239);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(45, 13);
             this.label7.TabIndex = 7;
@@ -118,7 +122,7 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(301, 191);
+            this.label6.Location = new System.Drawing.Point(301, 183);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(42, 13);
             this.label6.TabIndex = 6;
@@ -128,7 +132,7 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(254, 191);
+            this.label5.Location = new System.Drawing.Point(254, 183);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 13);
             this.label5.TabIndex = 5;
@@ -240,6 +244,26 @@
             this.EnvSelectionTabs.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.EnvSelectionTabs.TabIndex = 1;
             // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(301, 211);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(55, 13);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "Gemerson";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(253, 211);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(42, 13);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "Credits:";
+            // 
             // EEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -279,6 +303,8 @@
         private System.Windows.Forms.TabPage MachineTab;
         private EnvEditor MachineEditor;
         private System.Windows.Forms.TabControl EnvSelectionTabs;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label10;
 
 
 
