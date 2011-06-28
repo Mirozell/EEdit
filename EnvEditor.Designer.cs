@@ -115,6 +115,7 @@
             this.imageList32.Images.SetKeyName(6, "Save.ico");
             this.imageList32.Images.SetKeyName(7, "Add.ico");
             this.imageList32.Images.SetKeyName(8, "Restore.ico");
+            this.imageList32.Images.SetKeyName(9, "SaveToFile.ico");
             // 
             // RestoreVarButton
             // 
@@ -307,11 +308,12 @@
             // 
             // ExportButton
             // 
-            this.ExportButton.Location = new System.Drawing.Point(51, 11);
+            this.ExportButton.ImageKey = "SaveToFile.ico";
+            this.ExportButton.ImageList = this.imageList32;
+            this.ExportButton.Location = new System.Drawing.Point(51, 3);
             this.ExportButton.Name = "ExportButton";
-            this.ExportButton.Size = new System.Drawing.Size(75, 23);
+            this.ExportButton.Size = new System.Drawing.Size(42, 39);
             this.ExportButton.TabIndex = 6;
-            this.ExportButton.Text = "Export";
             this.toolTip1.SetToolTip(this.ExportButton, "Export to File");
             this.ExportButton.UseVisualStyleBackColor = true;
             this.ExportButton.Click += new System.EventHandler(this.ExportButton_Click);
@@ -320,7 +322,7 @@
             // 
             this.ResetButton.ImageKey = "Restore.ico";
             this.ResetButton.ImageList = this.imageList32;
-            this.ResetButton.Location = new System.Drawing.Point(132, 3);
+            this.ResetButton.Location = new System.Drawing.Point(99, 3);
             this.ResetButton.Name = "ResetButton";
             this.ResetButton.Size = new System.Drawing.Size(42, 39);
             this.ResetButton.TabIndex = 7;
@@ -341,6 +343,7 @@
             this.imageList16.Images.SetKeyName(6, "Save.ico");
             this.imageList16.Images.SetKeyName(7, "Add.ico");
             this.imageList16.Images.SetKeyName(8, "Restore.ico");
+            this.imageList16.Images.SetKeyName(9, "SaveToFile.ico");
             // 
             // SaveButton
             // 
