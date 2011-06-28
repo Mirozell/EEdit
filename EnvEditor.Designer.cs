@@ -318,11 +318,12 @@
             // 
             // ResetButton
             // 
-            this.ResetButton.Location = new System.Drawing.Point(132, 11);
+            this.ResetButton.ImageKey = "Restore.ico";
+            this.ResetButton.ImageList = this.imageList32;
+            this.ResetButton.Location = new System.Drawing.Point(132, 3);
             this.ResetButton.Name = "ResetButton";
-            this.ResetButton.Size = new System.Drawing.Size(75, 23);
+            this.ResetButton.Size = new System.Drawing.Size(42, 39);
             this.ResetButton.TabIndex = 7;
-            this.ResetButton.Text = "Reset";
             this.toolTip1.SetToolTip(this.ResetButton, "Reset to Initial State");
             this.ResetButton.UseVisualStyleBackColor = true;
             this.ResetButton.Click += new System.EventHandler(this.Reset_Click);
