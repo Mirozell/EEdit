@@ -114,12 +114,14 @@
             this.imageList32.Images.SetKeyName(5, "Up.ico");
             this.imageList32.Images.SetKeyName(6, "Save.ico");
             this.imageList32.Images.SetKeyName(7, "Add.ico");
+            this.imageList32.Images.SetKeyName(8, "Restore.ico");
             // 
             // RestoreVarButton
             // 
             this.RestoreVarButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.RestoreVarButton.Enabled = false;
-            this.RestoreVarButton.Image = global::EEdit.Properties.Resources.Restore;
+            this.RestoreVarButton.ImageKey = "Restore.ico";
+            this.RestoreVarButton.ImageList = this.imageList32;
             this.RestoreVarButton.Location = new System.Drawing.Point(88, 374);
             this.RestoreVarButton.Name = "RestoreVarButton";
             this.RestoreVarButton.Size = new System.Drawing.Size(38, 36);
@@ -132,7 +134,8 @@
             // 
             this.RemoveVarButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.RemoveVarButton.Enabled = false;
-            this.RemoveVarButton.Image = global::EEdit.Properties.Resources.RedX;
+            this.RemoveVarButton.ImageKey = "RedX.ico";
+            this.RemoveVarButton.ImageList = this.imageList32;
             this.RemoveVarButton.Location = new System.Drawing.Point(44, 374);
             this.RemoveVarButton.Name = "RemoveVarButton";
             this.RemoveVarButton.Size = new System.Drawing.Size(38, 36);
@@ -338,6 +341,7 @@
             this.imageList16.Images.SetKeyName(5, "Up.ico");
             this.imageList16.Images.SetKeyName(6, "Save.ico");
             this.imageList16.Images.SetKeyName(7, "Add.ico");
+            this.imageList16.Images.SetKeyName(8, "Restore.ico");
             // 
             // SaveButton
             // 
