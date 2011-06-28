@@ -247,6 +247,16 @@ namespace EEdit
             AddEntry();
         }
 
+        private void ValueDisplay_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.SelectEnvironmentVariableInValueDisplay();
+        }
+
+        private void ValueDisplay_KeyDown(object sender, KeyEventArgs e)
+        {
+            this.SelectEnvironmentVariableInValueDisplay();
+        }
+
         private void AddEntry()
         {
             ListViewItem item = new ListViewItem();
@@ -416,6 +426,46 @@ namespace EEdit
             {
                 EntryList.Items[e.NewStartingIndex].Selected = true;
             }
+        }
+
+        private void SelectEnvironmentVariableInValueDisplay()
+        {
+            string environmentVariable = this.GetEnvironmentVariableFromString(this.ValueDisplay.Text, this.ValueDisplay.SelectionStart);
+
+            ListViewItem item = this.EntryList.FindItemWithText(environmentVariable);
+
+            if (item != null)
+            {
+                item.Selected = true;
+                this.EntryList.EnsureVisible(item.Index);
+            }
+        }
+
+        private string GetEnvironmentVariableFromString(string variables, int indexInString)
+        {
+            string variable = string.Empty;
+
+            if (variables.Substring(0, indexInString).IndexOf(';') > -1)
+            {
+                int beginningOfVariable = variables.Substring(0, indexInString).LastIndexOf(';');
+                int endOfVariable = variables.Substring(beginningOfVariable + 1).IndexOf(';');
+
+                if (endOfVariable > -1)
+                {
+                    variable = variables.Substring(beginningOfVariable + 1, endOfVariable);
+                }
+                else
+                {
+                    variable = variables.Substring(beginningOfVariable + 1);
+                }
+            }
+            else
+            {
+                // looks like it's the first variable
+                variable = variables.Substring(0, variables.IndexOf(';'));
+            }
+
+            return variable;
         }
     }
 }

@@ -131,6 +131,7 @@
     <Content Include="Icons\RedX.ico" />
     <Content Include="Icons\Restore.ico" />
     <Content Include="Icons\Save.ico" />
+    <Content Include="Icons\SaveToFile.ico" />
     <Content Include="Icons\Up.ico" />
   </ItemGroup>
   <ItemGroup>

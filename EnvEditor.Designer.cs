@@ -277,6 +277,8 @@
             this.ValueDisplay.ReadOnly = true;
             this.ValueDisplay.Size = new System.Drawing.Size(430, 20);
             this.ValueDisplay.TabIndex = 2;
+            this.ValueDisplay.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ValueDisplay_KeyDown);
+            this.ValueDisplay.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ValueDisplay_MouseDown);
             // 
             // EntryList
             // 
