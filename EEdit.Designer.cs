@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EEditForm));
             this.AboutTab = new System.Windows.Forms.TabPage();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.LicenseLink = new System.Windows.Forms.LinkLabel();
             this.label9 = new System.Windows.Forms.Label();
             this.VersionLabel = new System.Windows.Forms.Label();
@@ -46,8 +48,6 @@
             this.MachineTab = new System.Windows.Forms.TabPage();
             this.MachineEditor = new EEdit.EnvEditor();
             this.EnvSelectionTabs = new System.Windows.Forms.TabControl();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.AboutTab.SuspendLayout();
             this.UserTab.SuspendLayout();
             this.MachineTab.SuspendLayout();
@@ -75,6 +75,26 @@
             this.AboutTab.TabIndex = 2;
             this.AboutTab.Text = "About";
             this.AboutTab.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(301, 211);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(55, 13);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "Gemerson";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(253, 211);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(42, 13);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "Credits:";
             // 
             // LicenseLink
             // 
@@ -243,26 +263,7 @@
             this.EnvSelectionTabs.Size = new System.Drawing.Size(702, 449);
             this.EnvSelectionTabs.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.EnvSelectionTabs.TabIndex = 1;
-            // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(301, 211);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(55, 13);
-            this.label8.TabIndex = 12;
-            this.label8.Text = "Gemerson";
-            // 
-            // label10
-            // 
-            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(253, 211);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(42, 13);
-            this.label10.TabIndex = 11;
-            this.label10.Text = "Credits:";
+            this.EnvSelectionTabs.SelectedIndexChanged += new System.EventHandler(this.EnvSelectionTabs_SelectedIndexChanged);
             // 
             // EEditForm
             // 
@@ -275,6 +276,7 @@
             this.Name = "EEditForm";
             this.Text = "EEdit";
             this.Load += new System.EventHandler(this.EEdit_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EEditForm_KeyDown);
             this.AboutTab.ResumeLayout(false);
             this.AboutTab.PerformLayout();
             this.UserTab.ResumeLayout(false);

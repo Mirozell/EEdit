@@ -56,7 +56,6 @@ namespace EEdit
         {
             // handle the update manually.  The list will refresh when value changes.
             e.CancelEdit = true;
-            EntryList.LabelEdit = false;
 
             if (e.Label == null || string.IsNullOrWhiteSpace(e.Label)) return;
 
@@ -70,9 +69,7 @@ namespace EEdit
 
         private void CopyValueButton_Click(object sender, EventArgs e)
         {
-            ValueDisplay.Focus();
-            ValueDisplay.SelectAll();
-            Clipboard.SetText(ValueDisplay.Text);
+            CopyValue();
         }
 
         private void EntryList_SelectedIndexChanged(object sender, EventArgs e)
@@ -92,30 +89,12 @@ namespace EEdit
 
         private void UpButton_Click(object sender, EventArgs e)
         {
-            if (EntryList.SelectedIndices.Count == 0)
-                return;
-
-            ListViewItem item = EntryList.SelectedItems[0];
-
-            if (item.Index > 0)
-            {
-                EnvVariable value = ((EnvVariable)item.Tag);
-                value.MoveEntry(item.Index, item.Index - 1);
-            }
+            MoveSelectedEntryUp();
         }
 
         private void DownButton_Click(object sender, EventArgs e)
         {
-            if (EntryList.SelectedIndices.Count == 0)
-                return;
-
-            ListViewItem item = EntryList.SelectedItems[0];
-
-            if (item.Index < EntryList.Items.Count - 1)
-            {
-                EnvVariable value = ((EnvVariable)item.Tag);
-                value.MoveEntry(item.Index, item.Index + 1);
-            }
+            MoveSelectedEntryDown();
         }
 
         private void BottomButton_Click(object sender, EventArgs e)
@@ -226,6 +205,13 @@ namespace EEdit
             AddVariable();
         }
 
+        private void AddEntryButton_Click(object sender, EventArgs e)
+        {
+            AddEntry();
+        }
+
+        #endregion
+
         private void AddVariable()
         {
             ListViewItem item = new ListViewItem();
@@ -237,22 +223,50 @@ namespace EEdit
             item.BeginEdit();
         }
 
-        private void AddEntryButton_Click(object sender, EventArgs e)
-        {
-            AddEntry();
-        }
-
         private void AddEntry()
         {
             ListViewItem item = new ListViewItem();
             EntryList.Items.Add(item);
             item.EnsureVisible();
 
-            EntryList.LabelEdit = true;
             item.BeginEdit();
         }
 
-        #endregion
+        private void MoveSelectedEntryDown()
+        {
+            if (EntryList.SelectedIndices.Count == 0)
+                return;
+
+            ListViewItem item = EntryList.SelectedItems[0];
+
+            if (item.Index < EntryList.Items.Count - 1)
+            {
+                EnvVariable value = ((EnvVariable)item.Tag);
+                value.MoveEntry(item.Index, item.Index + 1);
+            }
+        }
+
+        private void MoveSelectedEntryUp()
+        {
+            if (EntryList.SelectedIndices.Count == 0)
+                return;
+
+            ListViewItem item = EntryList.SelectedItems[0];
+
+            if (item.Index > 0)
+            {
+                EnvVariable value = ((EnvVariable)item.Tag);
+                value.MoveEntry(item.Index, item.Index - 1);
+            }
+        }
+
+        private void CopyValue()
+        {
+            ValueDisplay.Focus();
+            ValueDisplay.SelectAll();
+            Clipboard.SetText(ValueDisplay.Text);
+        }
+
         private void Save()
         {
             try
@@ -428,6 +442,48 @@ namespace EEdit
             if (e.NewStartingIndex >= 0)
             {
                 EntryList.Items[e.NewStartingIndex].Selected = true;
+            }
+        }
+
+        internal void Shortcut(KeyEventArgs e)
+        {
+            if (!e.Control || e.Alt || e.Shift) return;
+
+            e.Handled = true;
+
+            // TODO: get this into some kind of lookup table
+            switch (e.KeyCode)
+            {
+                case Keys.S:
+                    Save();
+                    break;
+                case Keys.E:
+                    ExportEnvironment();
+                    break;
+                case Keys.R:
+                    Reset();
+                    break;
+                case Keys.V:
+                    AddVariable();
+                    break;
+                case Keys.N:
+                    AddEntry();
+                    break;
+                case Keys.C:
+                    CopyValue();
+                    break;
+                case Keys.U:
+                    RestoreSelectedVariable();
+                    break;
+                case Keys.Up:
+                    MoveSelectedEntryUp();
+                    break;
+                case Keys.Down:
+                    MoveSelectedEntryDown();
+                    break;
+                default:
+                    e.Handled = false;
+                    break;
             }
         }
     }

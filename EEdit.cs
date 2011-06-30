@@ -26,9 +26,13 @@ namespace EEdit
 {
     public partial class EEditForm : Form
     {
+        private EnvEditor activeEditor;
+
         public EEditForm()
         {
             InitializeComponent();
+            KeyPreview = true;
+            activeEditor = MachineEditor;
         }
 
         private void EEdit_Load(object sender, EventArgs e)
@@ -48,6 +52,21 @@ namespace EEdit
         {
             LicenseLink.LinkVisited = true;
             Process.Start("http://www.gnu.org/licenses/gpl.txt");
+        }
+
+        private void EEditForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (activeEditor == null) return;
+
+            activeEditor.Shortcut(e);
+        }
+
+        private void EnvSelectionTabs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            activeEditor =
+                (EnvSelectionTabs.SelectedTab == MachineTab) ? MachineEditor :
+                (EnvSelectionTabs.SelectedTab == UserTab) ? UserEditor :
+                null;
         }
     }
 }

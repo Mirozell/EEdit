@@ -98,6 +98,7 @@
             this.NewVarButton.Name = "NewVarButton";
             this.NewVarButton.Size = new System.Drawing.Size(38, 36);
             this.NewVarButton.TabIndex = 7;
+            this.NewVarButton.TabStop = false;
             this.toolTip1.SetToolTip(this.NewVarButton, "Add");
             this.NewVarButton.UseVisualStyleBackColor = true;
             this.NewVarButton.Click += new System.EventHandler(this.NewVarButton_Click);
@@ -127,6 +128,7 @@
             this.RestoreVarButton.Name = "RestoreVarButton";
             this.RestoreVarButton.Size = new System.Drawing.Size(38, 36);
             this.RestoreVarButton.TabIndex = 6;
+            this.RestoreVarButton.TabStop = false;
             this.toolTip1.SetToolTip(this.RestoreVarButton, "Restore");
             this.RestoreVarButton.UseVisualStyleBackColor = true;
             this.RestoreVarButton.Click += new System.EventHandler(this.RestoreVariable_Click);
@@ -141,6 +143,7 @@
             this.RemoveVarButton.Name = "RemoveVarButton";
             this.RemoveVarButton.Size = new System.Drawing.Size(38, 36);
             this.RemoveVarButton.TabIndex = 5;
+            this.RemoveVarButton.TabStop = false;
             this.toolTip1.SetToolTip(this.RemoveVarButton, "Delete");
             this.RemoveVarButton.UseVisualStyleBackColor = true;
             this.RemoveVarButton.Click += new System.EventHandler(this.RemoveVarButton_Click);
@@ -183,6 +186,7 @@
             this.AddEntryButton.Name = "AddEntryButton";
             this.AddEntryButton.Size = new System.Drawing.Size(38, 35);
             this.AddEntryButton.TabIndex = 9;
+            this.AddEntryButton.TabStop = false;
             this.toolTip1.SetToolTip(this.AddEntryButton, "Add");
             this.AddEntryButton.UseVisualStyleBackColor = true;
             this.AddEntryButton.Click += new System.EventHandler(this.AddEntryButton_Click);
@@ -196,6 +200,7 @@
             this.RemoveEntryButton.Name = "RemoveEntryButton";
             this.RemoveEntryButton.Size = new System.Drawing.Size(38, 35);
             this.RemoveEntryButton.TabIndex = 8;
+            this.RemoveEntryButton.TabStop = false;
             this.toolTip1.SetToolTip(this.RemoveEntryButton, "Delete");
             this.RemoveEntryButton.UseVisualStyleBackColor = true;
             this.RemoveEntryButton.Click += new System.EventHandler(this.RemoveEntryButton_Click);
@@ -210,6 +215,7 @@
             this.BottomButton.Name = "BottomButton";
             this.BottomButton.Size = new System.Drawing.Size(38, 38);
             this.BottomButton.TabIndex = 7;
+            this.BottomButton.TabStop = false;
             this.toolTip1.SetToolTip(this.BottomButton, "Move to Bottom");
             this.BottomButton.UseVisualStyleBackColor = true;
             this.BottomButton.Click += new System.EventHandler(this.BottomButton_Click);
@@ -224,6 +230,7 @@
             this.DownButton.Name = "DownButton";
             this.DownButton.Size = new System.Drawing.Size(38, 38);
             this.DownButton.TabIndex = 6;
+            this.DownButton.TabStop = false;
             this.toolTip1.SetToolTip(this.DownButton, "Move Down");
             this.DownButton.UseVisualStyleBackColor = true;
             this.DownButton.Click += new System.EventHandler(this.DownButton_Click);
@@ -238,6 +245,7 @@
             this.UpButton.Name = "UpButton";
             this.UpButton.Size = new System.Drawing.Size(38, 38);
             this.UpButton.TabIndex = 5;
+            this.UpButton.TabStop = false;
             this.toolTip1.SetToolTip(this.UpButton, "Move Up");
             this.UpButton.UseVisualStyleBackColor = true;
             this.UpButton.Click += new System.EventHandler(this.UpButton_Click);
@@ -252,6 +260,7 @@
             this.TopButton.Name = "TopButton";
             this.TopButton.Size = new System.Drawing.Size(38, 36);
             this.TopButton.TabIndex = 4;
+            this.TopButton.TabStop = false;
             this.toolTip1.SetToolTip(this.TopButton, "Move to Top");
             this.TopButton.UseVisualStyleBackColor = true;
             this.TopButton.Click += new System.EventHandler(this.TopButton_Click);
@@ -264,6 +273,7 @@
             this.CopyValueButton.Name = "CopyValueButton";
             this.CopyValueButton.Size = new System.Drawing.Size(38, 36);
             this.CopyValueButton.TabIndex = 3;
+            this.CopyValueButton.TabStop = false;
             this.toolTip1.SetToolTip(this.CopyValueButton, "Copy to Clipboard");
             this.CopyValueButton.UseVisualStyleBackColor = true;
             this.CopyValueButton.Click += new System.EventHandler(this.CopyValueButton_Click);
@@ -277,6 +287,7 @@
             this.ValueDisplay.ReadOnly = true;
             this.ValueDisplay.Size = new System.Drawing.Size(430, 20);
             this.ValueDisplay.TabIndex = 2;
+            this.ValueDisplay.TabStop = false;
             // 
             // EntryList
             // 
@@ -314,6 +325,7 @@
             this.ExportButton.Name = "ExportButton";
             this.ExportButton.Size = new System.Drawing.Size(42, 39);
             this.ExportButton.TabIndex = 6;
+            this.ExportButton.TabStop = false;
             this.toolTip1.SetToolTip(this.ExportButton, "Export to File");
             this.ExportButton.UseVisualStyleBackColor = true;
             this.ExportButton.Click += new System.EventHandler(this.ExportButton_Click);
@@ -326,6 +338,7 @@
             this.ResetButton.Name = "ResetButton";
             this.ResetButton.Size = new System.Drawing.Size(42, 39);
             this.ResetButton.TabIndex = 7;
+            this.ResetButton.TabStop = false;
             this.toolTip1.SetToolTip(this.ResetButton, "Reset to Initial State");
             this.ResetButton.UseVisualStyleBackColor = true;
             this.ResetButton.Click += new System.EventHandler(this.Reset_Click);
@@ -353,6 +366,7 @@
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(42, 39);
             this.SaveButton.TabIndex = 4;
+            this.SaveButton.TabStop = false;
             this.toolTip1.SetToolTip(this.SaveButton, "Save Environment Variables");
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
