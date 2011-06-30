@@ -31,12 +31,24 @@ namespace EEdit
     public partial class EnvEditor : UserControl
     {
         private const string DefaultVariable = "path";
-
         private EnvModel environment;
+
+        private readonly Dictionary<Keys, Action> shortcuts;
 
         public EnvEditor()
         {
             InitializeComponent();
+
+            shortcuts = new Dictionary<Keys, Action>();
+            shortcuts[Keys.S] = Save;
+            shortcuts[Keys.E] = ExportEnvironment;
+            shortcuts[Keys.R] = Reset;
+            shortcuts[Keys.V] = AddVariable;
+            shortcuts[Keys.N] = AddEntry;
+            shortcuts[Keys.C] = CopyValue;
+            shortcuts[Keys.U] = RestoreSelectedVariable;
+            shortcuts[Keys.Up] = MoveSelectedEntryUp;
+            shortcuts[Keys.Down] = MoveSelectedEntryDown;
         }
 
         #region Form Events
@@ -449,41 +461,11 @@ namespace EEdit
         {
             if (!e.Control || e.Alt || e.Shift) return;
 
-            e.Handled = true;
-
-            // TODO: get this into some kind of lookup table
-            switch (e.KeyCode)
+            Action act;
+            if (shortcuts.TryGetValue(e.KeyCode, out act))
             {
-                case Keys.S:
-                    Save();
-                    break;
-                case Keys.E:
-                    ExportEnvironment();
-                    break;
-                case Keys.R:
-                    Reset();
-                    break;
-                case Keys.V:
-                    AddVariable();
-                    break;
-                case Keys.N:
-                    AddEntry();
-                    break;
-                case Keys.C:
-                    CopyValue();
-                    break;
-                case Keys.U:
-                    RestoreSelectedVariable();
-                    break;
-                case Keys.Up:
-                    MoveSelectedEntryUp();
-                    break;
-                case Keys.Down:
-                    MoveSelectedEntryDown();
-                    break;
-                default:
-                    e.Handled = false;
-                    break;
+                e.Handled = true;
+                act();
             }
         }
     }
