@@ -136,11 +136,13 @@ namespace EEdit
             {
                 case Keys.Delete:
                     RemoveSelectedEntry();
+                    e.Handled = true;
                     break;
 
                 case Keys.Enter:
                     ListViewItem item = EntryList.SelectedItems[0];
                     item.BeginEdit();
+                    e.Handled = true;
                     break;
             }
         }
@@ -153,6 +155,7 @@ namespace EEdit
             {
                 case Keys.Delete:
                     RemoveSelectedVariable();
+                    e.Handled = true;
                     break;
             }
         }
@@ -162,6 +165,7 @@ namespace EEdit
             // handle the assignment manually, so LoadValues gets the new variable name
             e.CancelEdit = true;
             VarList.LabelEdit = false;
+            VarList.Items[e.Item].Remove();
 
             if (e.Label == null || string.IsNullOrWhiteSpace(e.Label)) return;
 
@@ -204,21 +208,12 @@ namespace EEdit
 
         private void Reset_Click(object sender, EventArgs e)
         {
-            LoadEnvironment(environment.EnvTarget);
+            Reset();
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                environment.Save();
-                RemoveDeletedVariables();
-                UpdateVarStateIndicators();
-            }
-            catch (SecurityException)
-            {
-                MessageBox.Show("Permission denied. Unable to save.", "Security Error");
-            }
+            Save();
         }
 
         private void RestoreVariable_Click(object sender, EventArgs e)
@@ -258,6 +253,24 @@ namespace EEdit
         }
 
         #endregion
+        private void Save()
+        {
+            try
+            {
+                environment.Save();
+                RemoveDeletedVariables();
+                UpdateVarStateIndicators();
+            }
+            catch (SecurityException)
+            {
+                MessageBox.Show("Permission denied. Unable to save.", "Security Error");
+            }
+        }
+
+        private void Reset()
+        {
+            LoadEnvironment(environment.EnvTarget);
+        }
 
         private void RemoveDeletedVariables()
         {
