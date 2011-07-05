@@ -68,6 +68,7 @@ namespace EEdit
         {
             // handle the update manually.  The list will refresh when value changes.
             e.CancelEdit = true;
+            EntryList.Items[e.Item].Remove();
 
             if (e.Label == null || string.IsNullOrWhiteSpace(e.Label)) return;
 
